@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KoalaGIS.Web.OLMap", "KoalaGIS.Web.OLMap\KoalaGIS.Web.OLMap.csproj", "{2FE37ECA-B7ED-4100-B489-A563AEC082BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FE37ECA-B7ED-4100-B489-A563AEC082BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FE37ECA-B7ED-4100-B489-A563AEC082BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FE37ECA-B7ED-4100-B489-A563AEC082BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FE37ECA-B7ED-4100-B489-A563AEC082BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
