@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>KoalaGIS在线地图</title>
+    
+    <!--<link rel="stylesheet" type="text/css" href="http://localhost/Ext/extjs-4.1.0/resources/css/ext-all.css" />
+    <script type="text/javascript" src="http://localhost/Ext/extjs-4.1.0/ext-all-debug.js"></script>-->
+
+    <link rel="stylesheet" type="text/css" href="http://dev.sencha.com/deploy/ext-4.1.0-gpl/resources/css/ext-all.css" />
+    <script type="text/javascript" src="http://dev.sencha.com/deploy/ext-4.1.0-gpl/ext-all-debug.js"></script>
+    
+    
+    <script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+
+
+    <script type="text/javascript">
+        Ext.Loader.setConfig({ enabled: true });
+        
+        /*
+        function init() {
+            var map = new OpenLayers.Map('divMap');
+            var wms = new OpenLayers.Layer.WMS('OpenLayers WMS', 'http://vmap0.tiles.osgeo.org/wms/vmap0?', { 'layers': 'basic' });
+            map.addLayer(wms);
+            map.zoomToExtent(new OpenLayers.Bounds(-100.898437, 22.148438, -78.398437, 39.726563));
+        }
+        */
+      
+        
+        Ext.application({
+            name: 'OLMap',
+            launch: function () {
+                Ext.create('KoalaGIS.container.OLMapView');
+                debugger;
+                var koalaMap = Ext.create('KoalaGIS.map.OpenLayers');
+                koalaMap.init('divMap');
+                koalaMap.loadDefaultMap();
+            }
+        });
+        
+    </script>
+</head>
+<body>
+    <!--<div id="divMap" style="width:1000px; height:500px; border:1px solid red">
+    </div>-->
+</body>
+</html>
