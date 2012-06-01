@@ -57,6 +57,7 @@
     <Content Include="Default.htm" />
     <Content Include="KoalaGIS\app\OLMap.js" />
     <Content Include="KoalaGIS\container\OLMapView.js" />
+    <Content Include="KoalaGIS\map\Map.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
