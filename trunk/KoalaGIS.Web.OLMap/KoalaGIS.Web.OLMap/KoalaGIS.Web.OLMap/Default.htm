@@ -10,8 +10,8 @@
     <script type="text/javascript" src="http://dev.sencha.com/deploy/ext-4.1.0-gpl/ext-all-debug.js"></script>-->
     
     
-    <!--<script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>-->
-    <script type="text/javascript" src="http://localhost/OpenLayers/OpenLayers-2.11/lib/OpenLayers.js"></script>
+    <script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+    <!--<script type="text/javascript" src="http://localhost/OpenLayers/OpenLayers-2.11/lib/OpenLayers.js"></script>-->
     
     <!--<script type="text/javascript" src="http://localhost/OpenLayers/OpenLayers-2.11/OpenLayers.js"></script>-->
 
@@ -56,16 +56,19 @@
 
             //debugger;
 
-            var resolutions = [];
+            var res = [];
             for (var i = 0; i < 19; i++) {
 
-                resolutions[i] = 131072 * Math.pow(2, i - 19);
+                //res[i] = 131072 * Math.pow(2, i - 18);
+                res[i] = Math.pow(2, 18 - i);
             }
 
             var baidu = new KoalaGIS.Layer.WMTS.Baidu(
                 'baidu',
                 'http://q3.baidu.com/it/',
-                { isBaseLayer: true, displayOutsideMaxExtent:true,resolutions:resolutions,maxExtent: new OpenLayers.Bounds(-20037508.34, -20037508.34, 20037508.34, 20037508.34) }
+                { isBaseLayer: true, 
+                    
+                displayOutsideMaxExtent: false, resolutions: res, maxExtent: new OpenLayers.Bounds(-20037508.34, -20037508.34, 20037508.34, 20037508.34) }
             );
 
             //map.addLayers([fmzk]);
@@ -73,15 +76,27 @@
             //debugger;
             //map.setCenter(new OpenLayers.LonLat(12958175, 4825923.77), 6);
 
-            debugger;
             var proj = new OpenLayers.Projection('EPSG:4326');
             var proj2 = new OpenLayers.Projection('EPSG:900913');
-            var lonlat = new OpenLayers.LonLat(116.404, 39.915);
+            //var lonlat = new OpenLayers.LonLat(116.404, 39.915);
+            
+            //定位到杭州市保俶北路83号
+            var lonlat = new OpenLayers.LonLat(120.14127, 30.12216);
             lonlat.transform(proj, proj2);
 
 
             //map.setCenter(new OpenLayers.LonLat(3188191, 1088387.77), 5);
-            map.setCenter(lonlat, 5);
+            map.setCenter(lonlat, 16);
+
+            map.addControl(new OpenLayers.Control.MousePosition({displayProjection:new OpenLayers.Projection('EPSG:4326')}));
+            map.addControl(new OpenLayers.Control.PanZoomBar());
+            //map.setCenter(new OpenLayers.LonLat(12958175, 4825923.77), 18);
+
+            map.events.register('mousemove', null, function (e) {
+
+                //debugger;
+
+            });
 
         }
       
@@ -100,7 +115,7 @@
     </script>
 </head>
 <body onload="init()">
-    <div id="divMap" style="width:1000px; height:500px; border:1px solid red">
+    <div id="divMap" style="width:1024px; height:768px; border:1px solid red">
     </div>
 </body>
 </html>
