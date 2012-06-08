@@ -1,4 +1,7 @@
 在线地图web项目
 
-2012-05-29
+2012-05-29 By Robby
 基本框架搭建 Ext4js OpenLayers2.11
+
+2012-06-08 By Robby
+KoalaGIS.Layer.WMTS.Baidu初步完成，可以调用百度地图，显示地图

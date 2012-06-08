@@ -16,18 +16,24 @@ KoalaGIS.Layer.WMTS.Baidu = OpenLayers.Class(OpenLayers.Layer.XYZ, {
 
     url: null,
 
-    tileOrigin: new OpenLayers.LonLat(0, 0),
+    tileOrigin: new OpenLayers.LonLat(-20037508.34, 20037508.34),
 
     tileSize: new OpenLayers.Size(256, 256),
 
     type: 'png',
+
+
 
     useScales: false,
 
     overrideDPI: false,
 
     initialize: function (options) {
-        // debugger;
+        this.resolutions = [];
+        for (var i = 0; i < 19; i++) {
+            this.resolutions[i] = Math.pow(2, 18 - i);
+        }
+
         OpenLayers.Layer.XYZ.prototype.initialize.apply(this, arguments);
 
         if (this.resolutions) {
@@ -224,7 +230,9 @@ KoalaGIS.Layer.WMTS.Baidu = OpenLayers.Class(OpenLayers.Layer.XYZ, {
 
         var res = this.getResolution();
 
-       // var res = Math.pow(2, z - 18);
+        //  z = 18 - z;
+
+        // var res = Math.pow(2, z - 18);
 
         // tile center
         var originTileX = (this.tileOrigin.lon + (res * this.tileSize.w / 2));
@@ -232,13 +240,25 @@ KoalaGIS.Layer.WMTS.Baidu = OpenLayers.Class(OpenLayers.Layer.XYZ, {
 
         var originTileY = (this.tileOrigin.lat + (res * this.tileSize.h / 2));
 
+        originTileX = 0;
+        originTileY = 0;
+
         var center = bounds.getCenterLonLat();
+        //center.lat = 4825923.77;
+        //center.lon = 12958175;
         var point = { x: center.lon, y: center.lat };
 
 
-                var x = (Math.round(Math.abs((center.lon - originTileX) / (res * this.tileSize.w))));
-                //var y = (Math.round(Math.abs((originTileY - center.lat) / (res * this.tileSize.h))));
-                var y = (Math.round(Math.abs((center.lat - originTileY) / (res * this.tileSize.h))));
+        //        var x = (Math.round(Math.abs((center.lon - originTileX) / (res * this.tileSize.w))));
+        //        //var y = (Math.round(Math.abs((originTileY - center.lat) / (res * this.tileSize.h))));
+        //        var y = (Math.round(Math.abs((center.lat - originTileY) / (res * this.tileSize.h))));
+
+        var x = (Math.round((center.lon - originTileX) / (res * this.tileSize.w)));
+        //var y = (Math.round(Math.abs((originTileY - center.lat) / (res * this.tileSize.h))));
+        var y = (Math.round((center.lat - originTileY) / (res * this.tileSize.h)));
+
+        // x = Math.round(center.lon * 1 / this.tileSize.w);
+        // y = Math.round(center.lat * 1 / this.tileSize.h);
 
         //var x = Math.floor(Math.abs((center.lon) * res / this.tileSize.w));
         //var y = (Math.round(Math.abs((originTileY - center.lat) / (res * this.tileSize.h))));
@@ -291,11 +311,16 @@ KoalaGIS.Layer.WMTS.Baidu = OpenLayers.Class(OpenLayers.Layer.XYZ, {
             // z = 'L' + this.zeroPad(z, 2, 16);
             // url = url + '/${z}/${y}/${x}.' + this.type;
 
-            url = url + '/u=x=${x};y=${y};z=${z};v=011;type=web&fm=44';
+            var x_str = '${x}'; var y_str = '${y}';
+            if (x < 0)
+                x_str = 'M${x}';
+            if (y < 0)
+                y_str = 'M${y}';
+            url = url + '/u=x=' + x_str + ';y=' + y_str + ';z=${z};v=011;type=web&fm=44';
         }
 
         // Write the values into our formatted url
-        url = OpenLayers.String.format(url, { 'x': x, 'y': y, 'z': z });
+        url = OpenLayers.String.format(url, { 'x': Math.abs(x), 'y': Math.abs(y), 'z': z });
 
         return url;
     },
