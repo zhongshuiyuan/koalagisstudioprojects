@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\Users\zhj\Desktop\hzbike" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="配置文件1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="cehui0303" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/FX.Security.Client.pdb" publishTime="06/13/2012 20:41:24" />
+    <file relUrl="bin/FX.Data.Client.pdb" publishTime="06/13/2012 20:41:24" />
+    <file relUrl="bin/FX.Security.Client.dll" publishTime="06/13/2012 20:41:24" />
+    <file relUrl="bin/KoalaGIS.Web.Server.HZBike.dll" publishTime="06/13/2012 21:08:54" />
+    <file relUrl="Web.config" publishTime="06/13/2012 20:43:13" />
+    <file relUrl="QueryStationInfo.ashx" publishTime="06/13/2012 20:16:48" />
+    <file relUrl="bin/FX.Serialization.Client.dll" publishTime="06/13/2012 20:41:24" />
+    <file relUrl="bin/KoalaGIS.Web.Server.HZBike.pdb" publishTime="06/13/2012 21:08:54" />
+    <file relUrl="bin/FX.Serialization.Client.pdb" publishTime="06/13/2012 20:41:24" />
+    <file relUrl="bin/Cellbi.SvZLib.dll" publishTime="09/21/2011 10:58:42" />
+    <file relUrl="bin/FX.Data.Client.dll" publishTime="06/13/2012 20:41:24" />
+  </publishProfile>
+</publishData>
