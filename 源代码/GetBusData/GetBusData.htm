@@ -1,0 +1,141 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0044)http://www.newnaw.com/pub/sl/getbusjsondata/ -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>GetBusData</TITLE>
+<META content="text/html; charset=utf-8" http-equiv="Content-Type">
+<STYLE type="text/css">
+    html, body {
+	    height: 100%;
+	    overflow: auto;
+    }
+    body {
+	    padding: 0;
+	    margin: 0;
+    }
+    #silverlightControlHost {
+	    height: 100%;
+	    text-align:center;
+    }
+    
+#left { float:left; width:200px; background-color:red; }
+#right { margin-left:200px; background-color:green; } 
+    </STYLE>
+
+<SCRIPT type="text/javascript" src=""></SCRIPT>
+
+<SCRIPT type="text/javascript">
+        function onSilverlightError(sender, args) {
+            var appSource = "";
+            if (sender != null && sender != 0) {
+              appSource = sender.getHost().Source;
+            }
+            
+            var errorType = args.ErrorType;
+            var iErrorCode = args.ErrorCode;
+
+            if (errorType == "ImageError" || errorType == "MediaError") {
+              return;
+            }
+
+            var errMsg = "Unhandled Error in Silverlight Application " +  appSource + "\n" ;
+
+            errMsg += "Code: "+ iErrorCode + "    \n";
+            errMsg += "Category: " + errorType + "       \n";
+            errMsg += "Message: " + args.ErrorMessage + "     \n";
+
+            if (errorType == "ParserError") {
+                errMsg += "File: " + args.xamlFile + "     \n";
+                errMsg += "Line: " + args.lineNumber + "     \n";
+                errMsg += "Position: " + args.charPosition + "     \n";
+            }
+            else if (errorType == "RuntimeError") {           
+                if (args.lineNumber != 0) {
+                    errMsg += "Line: " + args.lineNumber + "     \n";
+                    errMsg += "Position: " +  args.charPosition + "     \n";
+                }
+                errMsg += "MethodName: " + args.methodName + "     \n";
+            }
+
+            throw new Error(errMsg);
+        }
+    </SCRIPT>
+
+<SCRIPT type="text/javascript" src="GetBusData_files/api.js"></SCRIPT>
+
+<SCRIPT type="text/javascript" src="GetBusData_files/json2.js"></SCRIPT>
+
+<SCRIPT type="text/javascript">
+        //var map = new BMap.Map("container");
+        //map.centerAndZoom(new BMap.Point(116.322, 40.003), 12);
+        var busline;
+        var slHost;
+        var sl;
+        var isCircleLine;
+        function setCity(strCity) {
+            busline = new BMap.BusLineSearch(strCity, {
+                //renderOptions: { map: map, panel: "results" },
+                onGetBusListComplete: function (result) {
+                    slHost = document.getElementById("slobject");
+                    sl = slHost.Content.SL;
+                    if (result) {
+                        if (result.getNumBusList() == 0) {
+                            sl.InflateResult(false,false, "");
+                            return;
+                        }
+                        if (result.getNumBusList() == 1) {
+                            isCircleLine = true;
+                        }
+                        if (result.getNumBusList() == 2) {
+                            isCircleLine = false;
+                        }
+                        var fstLine = result.getBusListItem(0);//上行
+                        busline.getBusLine(fstLine);
+                        var fstLine = result.getBusListItem(1);//下行
+                        busline.getBusLine(fstLine);
+                    }
+                },
+                onGetBusLineComplete: function (result) {                    
+                    try {
+                        if (result) {
+                            //公交车站json
+                            var jsonStops = "[";
+                            for (i = 0; i < result.getNumBusStations() ; i++) {
+                                var stop = result.getBusStation(i);
+                                var jsonStop = JSON.stringify(stop);
+                                jsonStops = jsonStops.concat(jsonStop + ",");
+                            }
+                            jsonStops = jsonStops.substring(0, jsonStops.length - 1);
+                            jsonStops = jsonStops.concat("]");
+                            jsonPath = JSON.stringify(result.getPath());
+                            //线路json
+                            jsonLine = "{\"name\":\"" + result.name + "\",\"startTime\":\"" + result.startTime + "\",\"endTime\":\"" + result.endTime + "\",\"company\":\"" + result.company + "\",\"stopsCount\":\"" + result.getNumBusStations() + "\",\"stops\":" + jsonStops + ",\"points\":" + jsonPath + "}";
+                            //var jsonLinesss = jsonLine;
+                            //alert(jsonLine);
+                            sl.InflateResult(true, isCircleLine, jsonLine);
+                        }
+                        else {
+                            //sl.InflateResult(false,isCircleLine, "");//环线，请求下行线路时发生
+                        }
+                    } catch (e) {
+                        sl.InflateResult(false, isCircleLine, "");//环线，请求下行线路时发生
+                    }
+                }
+            });
+        }
+        function busSearch(str) {
+            busline.getBusList(str);
+        }
+</SCRIPT>
+
+<META name="GENERATOR" content="MSHTML 9.00.8112.16446"></HEAD>
+<BODY>
+<FORM style="height: 100%;" id="form1" runat="server">
+<DIV id="silverlightControlHost">
+<OBJECT id="slobject" data="data:application/x-silverlight-2," width="100%" 
+type="application/x-silverlight-2" height="100%"><PARAM name="source" value="GetBusData.xap"><PARAM 
+name="onError" value="onSilverlightError"><PARAM name="background" 
+value="white"><PARAM name="minRuntimeVersion" value="5.0.61118.0"><PARAM name="autoUpgrade" 
+value="true"><A style="text-decoration: none;" href="http://go.microsoft.com/fwlink/?LinkID=149156&amp;v=5.0.61118.0"><IMG 
+style="" alt="Get Microsoft Silverlight" src="GetBusData_files/SLMedallion_CHS.png"></A></OBJECT><IFRAME 
+style="border: 0px currentColor; width: 0px; height: 0px; visibility: hidden;" 
+id="_sl_historyFrame" src="about:blank"></IFRAME></DIV></FORM></BODY></HTML>
