@@ -1,0 +1,5 @@
+C:\Documents and Settings\Administrator\Desktop\createimage\createimage\bin\Release\createimage.exe
+C:\Documents and Settings\Administrator\Desktop\createimage\createimage\bin\Release\createimage.pdb
+C:\Documents and Settings\Administrator\Desktop\createimage\createimage\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\Desktop\createimage\createimage\obj\x86\Release\createimage.exe
+C:\Documents and Settings\Administrator\Desktop\createimage\createimage\obj\x86\Release\createimage.pdb
