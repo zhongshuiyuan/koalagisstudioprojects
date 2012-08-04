@@ -3,3 +3,8 @@ C:\Documents and Settings\Administrator\Desktop\createimage\createimage\bin\Debu
 C:\Documents and Settings\Administrator\Desktop\createimage\createimage\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\Administrator\Desktop\createimage\createimage\obj\x86\Debug\createimage.exe
 C:\Documents and Settings\Administrator\Desktop\createimage\createimage\obj\x86\Debug\createimage.pdb
+F:\个人资料\Google SVN\svn\源代码\createimage\createimage\obj\x86\Debug\createimage.exe
+F:\个人资料\Google SVN\svn\源代码\createimage\createimage\obj\x86\Debug\createimage.pdb
+F:\个人资料\Google SVN\svn\源代码\createimage\createimage\bin\Debug\createimage.exe
+F:\个人资料\Google SVN\svn\源代码\createimage\createimage\bin\Debug\createimage.pdb
+F:\个人资料\Google SVN\svn\源代码\createimage\createimage\obj\x86\Debug\ResolveAssemblyReference.cache

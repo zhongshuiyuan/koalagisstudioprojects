@@ -14,25 +14,25 @@ namespace createimage
         static void Main(string[] args)
         {
             int size = 256;
-            int row = 8;
-            int col = 15;
+            int row = 15;
+            int col = 20;
             int widht = col * size;
             int height = row * size;
-            //Bitmap bmp = new Bitmap(widht, height);
-            Bitmap bmp = new Bitmap(widht, height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            Bitmap bmp = new Bitmap(widht, height);
+            //Bitmap bmp = new Bitmap(widht, height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
 
             //百度
-            //int startRow = 27497;
-            //int startCol = 104486;
+            int startRow = 13748;
+            int startCol = 52224;
 
             //杭州规划局
             //int startRow = 433;
             //int startCol = 423;
 
             //杭州规划局新
-            int startRow = 146416;
-            int startCol = 76776;
+            //int startRow = 146416;
+            //int startCol = 76776;
 
             Graphics g = Graphics.FromImage(bmp);
 
@@ -46,11 +46,13 @@ namespace createimage
                 {
                     try
                     {
+                        //http://q3.baidu.com/it//u=x=52224;y=13748;z=18;v=011;type=web&fm=44
+                        //http://q6.baidu.com/it/u=x=6527;y=1718;z=15;v=011;type=web&fm=44
                    // http://q8.baidu.com/it/u=x=104486;y=27497;z=19;v=011;type=web&fm=44 
                     //http://220.191.211.111/ArcGIS/rest/services/ghj_map/MapServer/tile/9/146416/76776.png
-                        string url = string.Format("http://220.191.211.111/ArcGIS/rest/services/ghj_map/MapServer/tile/9/{0}/{1}.png", startRow + i, startCol + j);
+                        //string url = string.Format("http://220.191.211.111/ArcGIS/rest/services/ghj_map/MapServer/tile/9/{0}/{1}.png", startRow + i, startCol + j);
                         //string url = string.Format("http://service.hzplanning.gov.cn/GHJMapServers/Map.aspx/tile/10/{0}/{1}", startRow + i, startCol + j);
-                        //string url = string.Format("http://q8.baidu.com/it/u=x={1};y={0};z=19;v=011;type=web&fm=44", startRow - i, startCol + j);
+                        string url = string.Format("http://q3.baidu.com/it/u=x={1};y={0};z=18;v=011;type=web&fm=44", startRow - i, startCol + j);
                         WebRequest request = WebRequest.Create(url);
                         WebResponse response = request.GetResponse();
                         Bitmap img = new Bitmap(response.GetResponseStream());
@@ -60,7 +62,7 @@ namespace createimage
                         g.DrawImage(bmp2, j * size, i * size);
 
                         g.DrawRectangle(pen, j * size, i * size, 256, 256);
-                        g.DrawString(string.Format("{0}-{1}", startRow + i, startCol + j), font, brush, j * size + 20, i * size + 20);
+                        g.DrawString(string.Format("{0}-{1}", startRow - i, startCol + j), font, brush, j * size + 20, i * size + 20);
                     }
                     catch (Exception er)
                     {
@@ -72,7 +74,7 @@ namespace createimage
                 }
             }
 
-            bmp.Save("D:\\ghj2010.jpg");
+            bmp.Save("D:\\baidu18.jpg");
         }
 
 
