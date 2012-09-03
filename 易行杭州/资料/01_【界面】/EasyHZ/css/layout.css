@@ -1,0 +1,991 @@
+﻿v\:*
+{
+    behavior: url(#default#VML);
+}
+o\:*
+{
+    behavior: url(#default#VML);
+}
+.shape
+{
+    behavior: url(#default#VML);
+}
+
+a{color:White;font-size:10pt;text-decoration:none; border:solid 0px ;}
+a IMG{ border:none;}
+a:visited{color:White; text-decoration:none;}
+a:hover{text-decoration:underline;color:Red;}
+/*去除链接点击时的外框虚线*/
+a
+{
+    /*blr:expression(this.onFocus=this.blur());   IE Opera*/ 
+    outline:none;   /*FF Opera*/
+}
+
+html,body
+{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	margin:0;
+	padding:0;
+	font-size:12px;
+	background-color:#d9d6d6;
+	cursor:default;
+}
+
+ul,li
+{
+    list-style:none;
+}
+
+/*========================顶部=============================*/
+#topCon
+{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:75px;
+    z-index:2;
+}
+
+#logocon
+{
+	position:absolute;
+    width:250px;
+    left:0px;
+    top:0px;
+    height:100%;
+    background:url(../images/layout/header_bg.png) repeat-x;
+}
+
+#logo
+{
+    width:245px;
+    height:100%;
+    background:url(../images/layout/easyhz_wordup_tran.png) no-repeat;
+}
+
+#userState
+{
+	position:absolute;
+    width:250px;
+    right:0px;
+    top:0px;
+    height:100%;
+    background:url(../images/layout/header_bg.png) repeat-x;
+}
+
+.header_sepline_left
+{
+	width:2px;
+	height:100%;
+	position:absolute;
+	top:0px;
+	left:255px;
+	background:url(../images/layout/header_sepline_ver.png) no-repeat;
+}
+
+.header_sepline_right
+{
+	width:2px;
+	height:100%;
+	position:absolute;
+	top:0px;
+	right:255px;
+	background:url(../images/layout/header_sepline_ver.png) no-repeat;
+}
+
+#mainAppCon
+{
+    position:absolute;
+    top:0px;
+    left:250px;
+    right:250px;
+    height:75px;
+}
+
+*html #mainAppCon
+{
+    width:expression(document.body.clientWidth-500+"px");
+}
+
+#mainAppCon_left
+{
+    float:left;
+    width:10px;
+    height:100%;
+    background:url(../images/layout/main_app_left_high.png) repeat-x;
+}
+
+#mainAppCon_middle
+{
+    height:100%;
+    margin:0 10px 0 10px;
+    background:url(../images/layout/main_app_bg_high.png) repeat-x;   
+}
+
+#mainAppCon_right
+{
+    float:right;
+    width:10px;
+    height:100%;
+    background:url(../images/layout/main_app_right_high.png) repeat-x;   
+}
+
+#mainApp_toggle
+{
+	width:16px;
+	height:16px;
+	right:5px;
+	position:absolute;
+	bottom:5px;
+	z-index:2;
+}
+
+#mainApp_content
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	right:0px;
+	height:100%;
+    background:url(../images/layout/header_bg.png) repeat-x;
+}
+
+#appCon
+{
+	height:60px;
+	z-index:2;
+}
+
+#mainAppSepLine
+{
+	margin:10px 0 5px 0;
+	height:2px;
+	background:url(../images/layout/mian_app_sepline_hor.png) no-repeat center top;
+	
+}
+
+#mainApp_submenu
+{
+	height:47px;
+	margin:0 10px 0px 10px;
+}
+
+#maptool_content
+{
+	position:absolute;
+	left:180px;
+	height:100%;
+}
+
+/*========================首页TOP右侧用户建议区=================================*/
+#stateContent
+{
+    top:0px;
+    left:0px;
+    width:100%;
+    height:30px;
+}
+
+#stateContent ul li
+{
+    float:left;
+    margin-right:5px;
+    position:relative;
+    z-index:100;
+}
+
+.splitline
+{
+    color:White;
+}
+
+#forecastIcon
+{
+    position:absolute;
+    float:left;
+    top:30px;
+    left:0px;
+    width:25px;
+    height:25px;
+    margin:10px;
+    background:url(../images/layout/forecast_small.png) no-repeat;
+}
+
+#forecastInfo
+{
+    position:relative;
+    left:60px;
+    font-family:微软雅黑;
+    font-size:13px;
+    color:White;
+}
+/*========================主面板区====================*/
+#mainCon
+{
+    position:absolute;
+    left:0px;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    height:100%;
+    width:100%;
+    background:url(../images/layout/map_bg.png);
+    z-index:1;
+}
+
+#mapcontent
+{
+    width:100%;
+    height:100%;    
+}
+
+/*========================底部状态栏========================*/
+#bottomCon
+{
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    width:100%;
+    height:40px;
+    z-index:2;
+}
+
+*html #bottomMiddle
+{
+	width:expression(document.body.clientWidth-710+"px");
+}
+
+#bottom_toolbar
+{
+    position:absolute;
+    left:0px;
+    top:-43px;
+    height:53px;
+    width:100%;
+    z-index:2;
+}
+
+#bottom_toolbar_bg
+{
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+    z-index:1px;
+    line-height:20px;
+    color:White;
+    text-align:center; 
+    font-size:14px;   
+    background:url(../images/layout/bottom_panel_middle.png) repeat-x;
+}
+
+#toolbar_control
+{
+	position:absolute;
+	top:10px;
+	right:8px;
+	height:16px;
+	width:16px;
+}
+/*=============================工具条================================*/
+.toolbar_expand
+{
+    position:absolute;
+    left:0px;
+    top:75px;
+    width:100%;
+    height:30px;
+    z-index:5;
+}
+
+.toolbar_contract
+{
+    position:absolute;
+    left:0px;
+    top:75px;
+    height:30px;
+    z-index:5;
+}
+
+#toolbar_bg
+{
+    position:absolute;
+    left:0px;
+    top:0px;
+    height:100%;
+    width:100%;
+    background:url(../images/layout/toolbar_bg2.png) repeat-x;
+}
+
+/*============================查询面板==================================*/
+.resultPanel_expand
+{
+    position:absolute;
+    right:0px;
+    top:75px;
+    width:265px;
+    z-index:10;
+}
+
+.resultPanel_contract
+{
+    position:absolute;
+    right:-255px;
+    top:75px;
+    width:265px;
+    z-index:10;
+}
+
+a.resultPanel_control_arrow_in
+{
+    position:absolute;
+    left:0px;
+    height:55px;
+    width:10px;
+    background:url(../images/layout/arrow_in.png) no-repeat;
+    z-index:11px;
+}
+
+a.resultPanel_control_arrow_out
+{
+    position:absolute;
+    left:0px;
+    height:55px;
+    width:10px;
+    background:url(../images/layout/arrow_out.png) no-repeat;
+    z-index:11px;
+}
+
+#resultTitle
+{
+    position:absolute;
+    left:10px;
+    top:0px;
+    width:100%;
+    height:30px;
+    z-index:11px;
+    background:url(../images/layout/resultpanel_bg.png) repeat-x;
+}
+
+#titleContent
+{
+    color: White;
+    font-size: 12pt;
+    font-weight: bold;
+    height: 30px;
+    left: 10px;
+    line-height: 30px;
+    position: absolute;
+    text-align:center;
+    top: 0;
+    font-family:微软雅黑;
+}
+
+#resultCon
+{
+    position:absolute;
+    left:10px;
+    top:30px;
+    width:100%;
+    background: url("../images/panel/func_panel_content_bg.png") repeat scroll 0 0 transparent;
+    z-index:11px;
+}
+
+/*============================主功能面板=================================*/
+.appbutton
+{
+	float:left;
+	margin:5px 3px;
+	height:60px;
+	width:60px;
+	cursor:pointer;
+	display:inline;
+}
+
+.appbutton:hover
+{
+	background:url(../images/appbar/appbar_mouseover_bg.png) no-repeat;
+}
+
+.toolbutton
+{
+	float:left;
+	margin:5px 3px;
+	height:40px;
+	width:40px;
+	cursor:pointer;
+	display:inline;
+}
+
+.toolbutton:hover
+{
+	background:url(../images/appbar/appbar_mouseover_bg_small.png) no-repeat;
+}
+
+.appicon
+{
+	height:40px;
+	width:60px;
+}
+
+.apptext
+{
+	height:20px;
+	width:60px;
+	line-height:20px;
+	text-align:center;
+	color:White;
+}
+
+.toolicon
+{
+	height:32px;
+	width:32px;
+}
+
+#mapSearch_appbutton .mapsearch
+{
+    background:url(../images/appbar/map_search.png) no-repeat;
+}
+
+#poiSearch_appbutton .poisearch
+{
+    background:url(../images/appbar/poi_search.png) no-repeat;
+}
+
+#busSearch_appbutton .bussearch
+{
+    background:url(../images/appbar/bus_big.png) no-repeat;
+}
+
+#bicycleSearch_appbutton .bicycleSearch
+{
+	background:url(../images/appbar/bicycle_big.png) no-repeat;
+}
+
+#shopping_appbutton .shopping
+{
+	background:url(../images/appbar/shopping_big.png) no-repeat;
+}
+
+#tour_appbutton .tour
+{
+	background:url(../images/appbar/hotel_big.png) no-repeat;
+}
+
+#tourspot_appbutton .tourspot
+{
+	background:url(../images/appbar/tour_big.png) no-repeat;
+}
+
+#hospital_appbutton .hospital
+{
+	background:url(../images/appbar/hospital_big.png) no-repeat;
+}
+
+#entertainment_appbutton .entertainment
+{
+	background:url(../images/appbar/entertainment_big.png) no-repeat;
+}
+
+#food_appbutton .food
+{
+	background:url(../images/appbar/restaurant_big.png) no-repeat;
+}
+
+#gasstation_appbutton .gasstation
+{
+	background:url(../images/appbar/gasstation_big.png) no-repeat;
+}
+
+#drive_appbutton .drive
+{
+	background:url(../images/appbar/drive_big.png) no-repeat;
+}
+
+#mapPlot_appbutton .mapplot
+{
+    background:url(../images/appbar/map_plot.png) no-repeat;
+}
+
+#mapCorrect_appbutton .mapcorrect
+{
+    background:url(../images/appbar/map_correct.png) no-repeat;
+}
+
+#plotManage_appbutton .plotmanage
+{
+    background:url(../images/appbar/plot_manage.png) no-repeat;
+}
+
+#bank_appbutton .bank
+{
+	background:url(../images/appbar/bank_big.png) no-repeat;
+}
+
+#help_appbutton .help
+{
+    background:url(../images/appbar/help.png) no-repeat;
+}
+
+#message_appbutton .message
+{
+    background:url(../images/appbar/message.png) no-repeat;
+}
+
+#life_appbutton .life
+{
+    background:url(../images/appbar/life_big.png) no-repeat;
+}
+
+/*工具栏*/
+#zoomin_maptool .zoomin
+{
+	background:url(../images/icons/ZoomIn_big.png) no-repeat;
+}
+
+#zoomout_maptool .zoomout
+{
+	background:url(../images/icons/ZoomOut_big.png) no-repeat;
+}
+
+#measure_maptool .measure
+{
+	background:url(../images/icons/measure_big.png) no-repeat;
+}
+
+#tip_maptool .tip
+{
+	background:url(../images/icons/tip_big.png) no-repeat;
+}
+
+#print_maptool .print
+{
+	background:url(../images/icons/print_big.png) no-repeat;
+}
+
+#clear_maptool .clear
+{
+	background:url(../images/icons/clear_big.png) no-repeat;
+}
+
+#searchinview_maptool .searchinview
+{
+	background:url(../images/icons/searchinview_big.png) no-repeat;
+}
+
+#fullextent_maptool .fullextent
+{
+	background:url(../images/icons/fullScreen_big.png) no-repeat;
+}
+
+
+/*子功能*/
+#fulltext_search
+{
+	position:relative;
+	width:265px;
+	height:35px;
+    background:url(../images/appbar/fulltext_search.png) left center;
+}
+
+#maptoolbar
+{
+	position:relative;
+	left:120px,
+	width:100%;
+}
+
+#fulltext_search_input
+{
+	position:absolute;
+	top:5px;
+	height:28px;
+	line-height:30px;
+	margin:0 0 0 35px;
+	width:194px;
+	border:none;
+	background:none;
+	
+}
+
+#fulltext_search_button
+{
+	position:absolute;
+	top:5px;
+	right:2px;
+	height:28px;
+	width:30px;
+	display:block;
+}
+
+/*==============================功能面板==================================*/
+.func_panel
+{
+	position:absolute;
+    top:95px;
+    right:10px;
+	width:260px;
+	z-index:2;
+}
+
+.func_panel_icon
+{
+	position:absolute;
+	width:60px;
+	height:40px;
+	left:5px;
+	top:-15px;
+	cursor:pointer;
+	z-index:2;
+}
+
+.func_panel_sepline
+{
+	position:absolute;
+	top:30px;
+	width:100%;
+	height:2px;
+	z-index:2;
+	background:url(../images/panel/func_panel_sepline_hor.png) no-repeat top center;
+}
+
+.func_panel_title
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+    width:100%;
+	height:30px;
+}
+
+.func_panel_title_left
+{
+	float:left;
+	width:8px;
+	height:30px;
+	background:url(../images/panel/func_panel_title_left.png) no-repeat;
+}
+
+.func_panel_title_right
+{
+	float:right;
+	width:8px;
+	height:30px;
+	background:url(../images/panel/func_panel_title_right.png) no-repeat;
+}
+
+.func_panel_title_bg
+{
+	margin:0 8px 0 8px;
+	height:30px;
+	background:url(../images/panel/func_panel_title_bg.png) repeat-x;
+}
+
+.func_panel_content
+{
+	position:absolute;	
+	bottom:10px;
+	top:30px;
+	left:0px;	
+	right:0px;
+	z-index:2;
+}
+
+.func_panel_content_left
+{
+	position:absolute;
+	width:5px;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	background:url(../images/panel/func_panel_content_left.png) repeat-y scroll 0 0;
+}
+
+.func_panel_content_right
+{
+	position:absolute;
+	width:5px;
+	top:0px;
+	bottom:0px;
+	right:0px;
+	background:url(../images/panel/func_panel_content_right.png) repeat-y scroll 0 0;
+}
+
+.func_panel_content_bg
+{
+	position:absolute;
+	top:0px;
+	bottom:0px;
+	right:5px;
+	left:5px;
+	overflow:auto;
+	scrollbar-face-color :#333333;
+	scrollbar-3d-light-color :white;
+	scrollbar-arrow-color:white;
+	scrollbar-shadow-color :#d9d6d6;
+	scrollbar-dark-shadow-color:#d9d6d6;
+	scrollbar-highlight-color:White;
+	background:url(../images/panel/func_panel_content_bg.png) repeat scroll 0 0;
+}
+
+.func_panel_foot
+{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	height:10px;
+}
+
+.func_panel_foot_left
+{
+	float:left;
+	width:8px;
+	height:10px;
+	background:url(../images/panel/func_panel_foot_left.png) no-repeat;
+}
+
+.func_panel_foot_right
+{
+	float:right;
+	width:8px;
+	height:10px;
+	background:url(../images/panel/func_panel_foot_right.png) no-repeat;
+}
+
+.func_panel_foot_bg
+{
+	margin:0 8px 0 8px;
+	height:10px;	
+	background:url(../images/panel/func_panel_foot_bg.png) repeat-x;
+}
+
+.func_panel_title_text
+{
+	position:absolute;
+	left:65px;
+	top:0px;
+	height:30px;
+	right:0px;
+	font-size:10pt;
+	font-weight:bold;
+	color:White;
+	line-height:40px;
+	cursor:move;
+	text-align:left;
+	z-index:3;
+}
+
+/**html .func_panel_title_text
+{
+	width:expression();
+}*/
+
+.func_panel_content_text
+{
+	padding:5px;
+	color:White;
+	line-height:18px;
+	z-index:3;
+}
+
+.func_panel_control
+{
+	position:absolute;
+	right:8px;
+	top:0;
+	width:60px;
+	height:30px;
+	z-index:4;
+}
+
+.func_panel_control_icon
+{
+	float:right;
+	display:block;
+	width:16px;
+	height:16px;
+	margin:10px 2px 0 2px;
+	cursor:pointer;
+}
+
+a.func_panel_close
+
+{
+	background:url(../images/panel/close.png) no-repeat;
+}
+
+a.func_panel_close:hover
+{
+	background:url(../images/panel/close_hover.png) no-repeat;
+}
+
+a.func_panel_collapse
+{
+	background:url(../images/panel/collapse.png) no-repeat;
+}
+
+a.func_panel_collapse:hover
+{
+	background:url(../images/panel/collapse_hover.png) no-repeat;
+}
+
+a.func_panel_min
+{
+	background:url(../images/panel/min.png) no-repeat;
+}
+
+a.func_panel_min:hover
+{
+	background:url(../images/panel/min_hover.png) no-repeat;
+}
+
+a.func_panel_expand
+{
+	background:url(../images/panel/expand.png) no-repeat;
+}
+
+a.func_panel_expand:hover
+{
+	background:url(../images/panel/expand_hover.png) no-repeat;
+}
+
+a.func_panel_minicon
+{
+	float:left;
+	margin:14px 2px 0px 2px;
+	width:24px;
+	height:24px;
+	display:block;
+	cursor:pointer;
+}
+
+a.func_panel_resize
+{
+	position:absolute;
+	right:4px;
+	bottom:-5px;
+	width:16px;
+	height:16px;
+	cursor:se-resize;
+	display:none;
+	z-index:5;
+}
+
+/*===========================控制面板的显示====================================*/
+#bus_search_panel
+{
+    display:none;
+}
+
+#bus_search_panel_icon
+{
+    background:url("../images/appbar/bus_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#bike_search_panel
+{
+    display:none;
+}
+
+#bike_search_panel_icon
+{
+    background:url("../images/appbar/bicycle_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#car_search_panel
+{
+    display:none;
+}
+
+#car_search_panel_icon
+{
+    background:url("../images/appbar/drive_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#tour_search_panel
+{
+    display:none;
+}
+
+#tour_search_panel_icon
+{
+    background:url("../images/appbar/hotel_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#shopping_search_panel
+{
+    display:none;
+}
+
+#shopping_search_panel_icon
+{
+    background:url("../images/appbar/shopping_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#entertainment_search_panel
+{
+    display:none;
+}
+
+#entertainment_search_panel_icon
+{
+    background:url("../images/appbar/entertainment_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#food_search_panel
+{
+    display:none;
+}
+
+#food_search_panel_icon
+{
+    background:url("../images/appbar/restaurant_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#bank_search_panel
+{
+    display:none;
+}
+
+#bank_search_panel_icon
+{
+    background:url("../images/appbar/bank_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#life_search_panel
+{
+    display:none;
+}
+
+#life_search_panel_icon
+{
+    background:url("../images/appbar/life_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#tourspot_search_panel
+{
+    display:none;
+}
+
+#tourspot_search_panel_icon
+{
+    background:url("../images/appbar/tour_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#hospital_search_panel
+{
+    display:none;
+}
+
+#hospital_search_panel_icon
+{
+    background:url("../images/appbar/hospital_big.png") no-repeat scroll 0 0 transparent;
+}
