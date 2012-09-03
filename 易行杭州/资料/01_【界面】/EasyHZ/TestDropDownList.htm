@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd]http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="css/CRselectBox.css" type="text/css"/> 
+<script src="js/GX/jquery-1.4.3.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+$(".CRselectBox").hover(function(){
+  $(this).addClass("CRselectBoxHover");
+},function(){
+  $(this).removeClass("CRselectBoxHover");
+});
+
+
+$(".CRselectValue").click(function(){
+  $(this).blur();
+  $(".CRselectBoxOptions").show();
+  return false;
+});
+
+
+$(".CRselectBoxItem a").click(function(){
+  $(this).blur();
+  var value = $(this).attr("rel");
+  var txt = $(this).html();
+  $("#abc").val(value);
+  $("#abc_CRtext").val(txt);
+  $(".CRselectValue").html(txt);
+  $(".CRselectBoxItem a").removeClass("selected");
+  $(this).addClass("selected");
+  $(".CRselectBoxOptions").hide();
+  return false;
+});
+
+
+/*点击任何地方关闭层*/
+$(document).click(function(event){
+  if( $(event.target).attr("class") != "CRselectBox" ){
+   $(".CRselectBoxOptions").hide();
+  }
+});
+})
+</script>
+</head>
+<body >
+<h1>jquery实现下拉框选择图片效果</h1>
+<div class="CRselectBox">
+    <input type="hidden" value="1"  name="abc" id="abc"/><!-- hidden 用来代替select的值 -->
+    <input type="hidden" value="<img src='001.bmp' border='0'>"  name="abc_CRtext" id="abc_CRtext"/> <!-- hidden 用来代替select的文本-->
+    <a class="CRselectValue" href="#"><img src='001.bmp' border='0'></a>
+    <ul class="CRselectBoxOptions">
+      <!--<li class="CRselectBoxItem"><a href="#" class="selected" rel="1"><img src='001.bmp' border='0'></a></li>
+      <li class="CRselectBoxItem"><a href="#" rel="2"><img src='002.bmp' border='0'></a></li>
+      <li class="CRselectBoxItem"><a href="#" rel="3"><img src='003.bmp' border='0'></a></li>-->
+        <div style=" width:100px; height:100px; background-color: Red;"></div>
+    </ul>
+</div>
+
+    <div id="input" style=" width:50px; height:20px;">
+        
+    
+    </div>
+
+</body>
+</html> 
