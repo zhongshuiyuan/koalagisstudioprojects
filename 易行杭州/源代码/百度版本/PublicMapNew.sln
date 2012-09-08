@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "EaseHZ", ".", "{FF81AFEC-58C2-4C18-A45F-C724310A3B96}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
+		Debug.AspNetCompiler.VirtualPath = "/PublicMapNew"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\桌面\zhangjian\PublicMapNew\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\PublicMapNew\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/PublicMapNew"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\桌面\zhangjian\PublicMapNew\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\PublicMapNew\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "57084"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF81AFEC-58C2-4C18-A45F-C724310A3B96}.Debug|.NET.ActiveCfg = Debug|.NET
+		{FF81AFEC-58C2-4C18-A45F-C724310A3B96}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
