@@ -17,6 +17,8 @@ function InitMap() {
     }
 
     ShowNavigationTool();
+
+    LoadBikes();
 }
 
 //zhj
@@ -26,4 +28,17 @@ function ShowNavigationTool() {
     map.addControl(new BMap.NavigationControl({
         offset:new BMap.Size(20,100)
     }));
+}
+
+
+//加载自行车
+function LoadBikes() {
+    for (var i = 0; i < bikes.length; i++) {
+        var x = bikes[i][8];
+        var y = bikes[i][9];
+        var point = map.pixelToPoint(new BMap.Pixel(x, y));
+        var mark = new BMap.Marker(point);
+
+        map.addOverlay(mark);
+    }
 }

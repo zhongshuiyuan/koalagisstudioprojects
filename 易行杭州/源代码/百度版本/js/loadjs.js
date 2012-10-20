@@ -9,6 +9,10 @@
 //include("js/dradrop/jquery.event.drag-2.0.js", "js");
 
 /*=================jsapi=================*/
+
+include("js/bike.js", "js");
+
+
 include("js/Namespace.js","js");
 include("js/map/map.js", "js");
 include("js/utils.js", "js");
