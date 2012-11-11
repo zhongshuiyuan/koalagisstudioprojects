@@ -1,0 +1,303 @@
+﻿/*==============================查询面板样式======================================*/
+.func_panel
+{
+	position:absolute;
+    top:95px;
+    right:10px;
+	width:260px;
+	z-index:2;
+}
+
+.func_panel_icon
+{
+	position:absolute;
+	width:60px;
+	height:40px;
+	left:5px;
+	top:-15px;
+	cursor:pointer;
+	z-index:2;
+}
+
+.func_panel_sepline
+{
+	position:absolute;
+	top:30px;
+	width:100%;
+	height:2px;
+	z-index:2;
+	background:url(../images/panel/func_panel_sepline_hor.png) no-repeat top center;
+}
+
+.func_panel_title
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+    width:100%;
+	height:30px;
+}
+
+.func_panel_title_left
+{
+	float:left;
+	width:8px;
+	height:30px;
+	background:url(../images/panel/func_panel_title_left.png) no-repeat;
+}
+
+.func_panel_title_right
+{
+	float:right;
+	width:8px;
+	height:30px;
+	background:url(../images/panel/func_panel_title_right.png) no-repeat;
+}
+
+.func_panel_title_bg
+{
+	margin:0 8px 0 8px;
+	height:30px;
+	background:url(../images/panel/func_panel_title_bg.png) repeat-x;
+}
+
+.func_panel_content
+{
+	position:absolute;	
+	bottom:10px;
+	top:30px;
+	left:0px;	
+	right:0px;
+	z-index:2;
+}
+
+.func_panel_content_left
+{
+	position:absolute;
+	width:5px;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	background:url(../images/panel/func_panel_content_left.png) repeat-y scroll 0 0;
+}
+
+.func_panel_content_right
+{
+	position:absolute;
+	width:5px;
+	top:0px;
+	bottom:0px;
+	right:0px;
+	background:url(../images/panel/func_panel_content_right.png) repeat-y scroll 0 0;
+}
+
+.func_panel_content_bg
+{
+	position:absolute;
+	top:0px;
+	bottom:0px;
+	right:5px;
+	left:5px;
+	overflow:auto;
+	scrollbar-face-color :#333333;
+	scrollbar-3d-light-color :white;
+	scrollbar-arrow-color:white;
+	scrollbar-shadow-color :#d9d6d6;
+	scrollbar-dark-shadow-color:#d9d6d6;
+	scrollbar-highlight-color:White;
+	background:url(../images/panel/func_panel_content_bg.png) repeat scroll 0 0;
+}
+
+.func_panel_foot
+{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	height:10px;
+}
+
+.func_panel_foot_left
+{
+	float:left;
+	width:8px;
+	height:10px;
+	background:url(../images/panel/func_panel_foot_left.png) no-repeat;
+}
+
+.func_panel_foot_right
+{
+	float:right;
+	width:8px;
+	height:10px;
+	background:url(../images/panel/func_panel_foot_right.png) no-repeat;
+}
+
+.func_panel_foot_bg
+{
+	margin:0 8px 0 8px;
+	height:10px;	
+	background:url(../images/panel/func_panel_foot_bg.png) repeat-x;
+}
+
+.func_panel_title_text
+{
+	position:absolute;
+	left:65px;
+	top:0px;
+	height:30px;
+	right:0px;
+	font-size:10pt;
+	font-weight:bold;
+	color:White;
+	line-height:40px;
+	cursor:move;
+	text-align:left;
+	z-index:3;
+}
+
+.func_panel_content_text
+{
+	padding:5px;
+	color:White;
+	line-height:18px;
+	z-index:3;
+}
+
+.func_panel_control
+{
+	position:absolute;
+	right:8px;
+	top:0;
+	width:60px;
+	height:30px;
+	z-index:4;
+}
+
+.func_panel_control_icon
+{
+	float:right;
+	display:block;
+	width:16px;
+	height:16px;
+	margin:10px 2px 0 2px;
+	cursor:pointer;
+}
+
+a.func_panel_close
+{
+	background:url(../images/panel/close.png) no-repeat;
+}
+
+a.func_panel_close:hover
+{
+	background:url(../images/panel/close_hover.png) no-repeat;
+}
+
+a.func_panel_collapse
+{
+	background:url(../images/panel/collapse.png) no-repeat;
+}
+
+a.func_panel_collapse:hover
+{
+	background:url(../images/panel/collapse_hover.png) no-repeat;
+}
+
+a.func_panel_min
+{
+	background:url(../images/panel/min.png) no-repeat;
+}
+
+a.func_panel_min:hover
+{
+	background:url(../images/panel/min_hover.png) no-repeat;
+}
+
+a.func_panel_expand
+{
+	background:url(../images/panel/expand.png) no-repeat;
+}
+
+a.func_panel_expand:hover
+{
+	background:url(../images/panel/expand_hover.png) no-repeat;
+}
+
+a.func_panel_minicon
+{
+	float:left;
+	margin:14px 2px 0px 2px;
+	width:24px;
+	height:24px;
+	display:block;
+	cursor:pointer;
+}
+
+a.func_panel_resize
+{
+	position:absolute;
+	right:4px;
+	bottom:-5px;
+	width:16px;
+	height:16px;
+	cursor:se-resize;
+	display:none;
+	z-index:5;
+}
+
+#bus_search_panel_icon
+{
+    background:url("../images/appbar/bus_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#bike_search_panel_icon
+{
+    background:url("../images/appbar/bicycle_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#car_search_panel_icon
+{
+    background:url("../images/appbar/drive_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#tour_search_panel_icon
+{
+    background:url("../images/appbar/hotel_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#shopping_search_panel_icon
+{
+    background:url("../images/appbar/shopping_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#entertainment_search_panel_icon
+{
+    background:url("../images/appbar/entertainment_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#food_search_panel_icon
+{
+    background:url("../images/appbar/restaurant_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#bank_search_panel_icon
+{
+    background:url("../images/appbar/bank_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#life_search_panel_icon
+{
+    background:url("../images/appbar/life_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#tourspot_search_panel_icon
+{
+    background:url("../images/appbar/tour_big.png") no-repeat scroll 0 0 transparent;
+}
+
+#hospital_search_panel_icon
+{
+    background:url("../images/appbar/hospital_big.png") no-repeat scroll 0 0 transparent;
+}
