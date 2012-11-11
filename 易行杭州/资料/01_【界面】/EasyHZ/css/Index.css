@@ -1,0 +1,298 @@
+﻿/*==========================全局样式================================*/
+v\:*
+{
+    behavior: url(#default#VML);
+}
+o\:*
+{
+    behavior: url(#default#VML);
+}
+.shape
+{
+    behavior: url(#default#VML);
+}
+
+a{color:White;font-size:10pt;text-decoration:none; border:solid 0px ;}
+a IMG{ border:none;}
+a:visited{color:White; text-decoration:none;}
+a:hover{text-decoration:underline;color:Red;}
+/*去除链接点击时的外框虚线*/
+a
+{
+    /*blr:expression(this.onFocus=this.blur());   IE Opera*/ 
+    outline:none;   /*FF Opera*/
+}
+
+html,body
+{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	margin:0;
+	padding:0;
+	font-size:12px;
+	background-color:#d9d6d6;
+	cursor:default;
+}
+
+ul,li
+{
+    list-style:none;
+}
+/*==========================顶部主功能面板区域===============================*/
+#topCon
+{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:75px;
+    z-index:2;
+}
+
+#logocon
+{
+	position:absolute;
+    width:250px;
+    left:0px;
+    top:0px;
+    height:100%;
+    background:url(../images/layout/header_bg.png) repeat-x;
+}
+
+#logo
+{
+    width:245px;
+    height:100%;
+    background:url(../images/layout/easyhz_wordup_tran.png) no-repeat;
+}
+
+#mainAppCon
+{
+    position:absolute;
+    top:0px;
+    left:250px;
+    right:250px;
+    height:75px;
+}
+
+#mainApp_content
+{
+	position:absolute;
+	left:0px;
+	top:0px;
+	right:0px;
+	height:100%;
+    background:url(../images/layout/header_bg.png) repeat-x;
+}
+
+#appCon
+{
+	height:60px;
+	z-index:2;
+}
+
+.appbutton
+{
+	float:left;
+	margin:5px 3px;
+	height:60px;
+	width:60px;
+	cursor:pointer;
+	display:inline;
+}
+
+.appbutton:hover
+{
+	background:url(../images/appbar/appbar_mouseover_bg.png) no-repeat;
+}
+
+.appicon
+{
+	height:40px;
+	width:60px;
+}
+
+.apptext
+{
+	height:20px;
+	width:60px;
+	line-height:20px;
+	text-align:center;
+	color:White;
+}
+
+#busSearch_appbutton .bussearch
+{
+    background:url(../images/appbar/bus_big.png) no-repeat;
+}
+
+#bicycleSearch_appbutton .bicycleSearch
+{
+	background:url(../images/appbar/bicycle_big.png) no-repeat;
+}
+
+#food_appbutton .food
+{
+	background:url(../images/appbar/restaurant_big.png) no-repeat;
+}
+
+#drive_appbutton .drive
+{
+	background:url(../images/appbar/drive_big.png) no-repeat;
+}
+
+#tour_appbutton .tour
+{
+	background:url(../images/appbar/hotel_big.png) no-repeat;
+}
+
+#entertainment_appbutton .entertainment
+{
+	background:url(../images/appbar/entertainment_big.png) no-repeat;
+}
+
+#shopping_appbutton .shopping
+{
+	background:url(../images/appbar/shopping_big.png) no-repeat;
+}
+
+#tourspot_appbutton .tourspot
+{
+	background:url(../images/appbar/tour_big.png) no-repeat;
+}
+
+#hospital_appbutton .hospital
+{
+	background:url(../images/appbar/hospital_big.png) no-repeat;
+}
+
+#bank_appbutton .bank
+{
+	background:url(../images/appbar/bank_big.png) no-repeat;
+}
+
+#life_appbutton .life
+{
+    background:url(../images/appbar/life_big.png) no-repeat;
+}
+
+/*==========================顶部主功能面板右侧用户状态区域===============================*/
+#userState
+{
+	position:absolute;
+    width:250px;
+    right:0px;
+    top:0px;
+    height:100%;
+    background:url(../images/layout/header_bg.png) repeat-x;
+}
+
+#stateContent
+{
+    top:0px;
+    left:0px;
+    width:100%;
+    height:30px;
+}
+
+#stateContent ul li
+{
+    float:left;
+    margin-right:5px;
+    position:relative;
+    z-index:100;
+}
+
+.splitline
+{
+    color:White;
+}
+
+#forecastIcon
+{
+    position:absolute;
+    float:left;
+    top:30px;
+    left:0px;
+    width:25px;
+    height:25px;
+    margin:10px;
+    background:url(../images/layout/forecast_small.png) no-repeat;
+}
+
+#forecastInfo
+{
+    position:relative;
+    left:60px;
+    font-family:微软雅黑;
+    font-size:13px;
+    color:White;
+}
+
+/*==========================顶部主功能面板底部分割线区域===============================*/
+.header_sepline_left
+{
+	width:2px;
+	height:100%;
+	position:absolute;
+	top:0px;
+	left:255px;
+	background:url(../images/layout/header_sepline_ver.png) no-repeat;
+}
+
+.header_sepline_right
+{
+	width:2px;
+	height:100%;
+	position:absolute;
+	top:0px;
+	right:255px;
+	background:url(../images/layout/header_sepline_ver.png) no-repeat;
+}
+
+/*===========================地图展示区域==========================================*/
+#mainCon
+{
+    position:absolute;
+    left:0px;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    height:100%;
+    width:100%;
+    background:url(../images/layout/map_bg.png);
+    z-index:1;
+}
+
+#mapcontent
+{
+    width:100%;
+    height:100%;    
+}
+
+/*===========================底部状态栏==========================================*/
+#bottomCon
+{
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    width:100%;
+    height:40px;
+    z-index:2;
+}
+
+#bottom_toolbar_bg
+{
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+    z-index:1px;
+    line-height:20px;
+    color:White;
+    text-align:center; 
+    font-size:14px;   
+    background:url(../images/layout/bottom_panel_middle.png) repeat-x;
+}
