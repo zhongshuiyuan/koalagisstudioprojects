@@ -1,13 +1,15 @@
 ﻿
 /*=================commonJS=================*/
-include("js/commonality/Namespace.js", "js");
-include("js/commonality/Class.js");
+include("js/common/Namespace.js", "js");
+include("js/common/Class.js");
 /*=================mapJS====================*/
 include("js/map/map.js", "js");
 /*=================utilJS===================*/
-include("js/utils.js", "js");
-include("js/webapp.js", "js");
-include("js/layout/PanelUtil.js","js");
-include("js/JQueryFunc.js");
+include("js/common/webapp.js", "js");
+include("js/layout/PanelObject.js");
+include("js/layout/PanelContent.js");
+include("js/layout/PanelUtil.js", "js");
+include("js/common/JQueryFunc.js");
+
 
 

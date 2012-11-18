@@ -104,8 +104,6 @@
         <div id="bottom_toolbar_bg"><a target="_blank" href="http://www.cnblogs.com/laoyu">Koala Studio Copyright </a>@ 2012 All Rights Reserved</div>
     </div>
 
-    <!--查询面板框-->
-
 </body>
 <script type="text/javascript" src="js/common/Loadjs.js"></script>
 </html>

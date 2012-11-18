@@ -293,6 +293,9 @@ ul,li
     line-height:20px;
     color:White;
     text-align:center; 
-    font-size:14px;   
+    font-size:14px; 
+    font-family:Consolas;
+    font-weight:bold;  
     background:url(../images/layout/bottom_panel_middle.png) repeat-x;
 }
+
