@@ -1,97 +1,87 @@
 
 $(document).ready(function () {
-    //根据toolbar和bottombar的高度设置resultPanel高度
-    $(".func_panel").css("height", document.body.clientHeight - /*顶部和底部*/125 - /*和底部保持一定距离*/10 + "px");
     //为导航栏对象赋onclick事件
     $("#busSearch_appbutton").click(
         function () {
-            EasyHZ.Util.showPanel("bus_search_panel");
-        });
-    $("#bicycleSearch_appbutton").click(
-        function () {
-            EasyHZ.Util.showPanel("bike_search_panel");
+            KoalaGIS.EASYHZ.Util.showPanel("BusSearch");
         });
     $("#drive_appbutton").click(
         function () {
-            EasyHZ.Util.showPanel("car_search_panel");
+            KoalaGIS.EASYHZ.Util.showPanel("CarSearch");
         });
     $("#tour_appbutton").click(
         function () {
-            EasyHZ.Util.showPanel("tour_search_panel");
+            KoalaGIS.EASYHZ.Util.showPanel("TourSearch");
         });
     $("#shopping_appbutton").click(
         function () {
-            EasyHZ.Util.showPanel("shopping_search_panel");
+            KoalaGIS.EASYHZ.Util.showPanel("ShoppingSearch");
         });
     $("#entertainment_appbutton").click(
         function () {
-            EasyHZ.Util.showPanel("entertainment_search_panel");
+            KoalaGIS.EASYHZ.Util.showPanel("EntertainmentSearch");
         });
     $("#food_appbutton").click(
         function () {
-            EasyHZ.Util.showPanel("food_search_panel");
+            KoalaGIS.EASYHZ.Util.showPanel("FoodSearch");
         });
     $("#bank_appbutton").click(
         function () {
-            EasyHZ.Util.showPanel("bank_search_panel");
+            KoalaGIS.EASYHZ.Util.showPanel("BankSearch");
         });
     $("#life_appbutton").click(
         function () {
-            EasyHZ.Util.showPanel("life_search_panel");
+            KoalaGIS.EASYHZ.Util.showPanel("LifeSearch");
         });
     $("#tourspot_appbutton").click(
         function () {
-            EasyHZ.Util.showPanel("tourspot_search_panel");
+            KoalaGIS.EASYHZ.Util.showPanel("TourSpotSearch");
         });
     $("#hospital_appbutton").click(
         function () {
-            EasyHZ.Util.showPanel("hospital_search_panel");
+            KoalaGIS.EASYHZ.Util.showPanel("HospitalSearch");
         });
 
     //为面板赋click事件
     $("#bus_search_panel_control").click(
         function () {
-            EasyHZ.Util.closePanel("bus_search_panel");
-        });
-    $("#bike_search_panel_control").click(
-        function () {
-            EasyHZ.Util.closePanel("bike_search_panel");
+            KoalaGIS.EASYHZ.Util.closePanel("BusSearch");
         });
     $("#car_search_panel_control").click(
         function () {
-            EasyHZ.Util.closePanel("car_search_panel");
+            KoalaGIS.EASYHZ.Util.closePanel("CarSearch");
         });
     $("#tour_search_panel_control").click(
         function () {
-            EasyHZ.Util.closePanel("tour_search_panel");
+            KoalaGIS.EASYHZ.Util.closePanel("TourSearch");
         });
     $("#shopping_search_panel_control").click(
         function () {
-            EasyHZ.Util.closePanel("shopping_search_panel");
+            KoalaGIS.EASYHZ.Util.closePanel("ShoppingSearch");
         });
     $("#entertainment_search_panel_control").click(
         function () {
-            EasyHZ.Util.closePanel("entertainment_search_panel");
+            KoalaGIS.EASYHZ.Util.closePanel("EntertainmentSearch");
         });
     $("#food_search_panel_control").click(
         function () {
-            EasyHZ.Util.closePanel("food_search_panel");
+            KoalaGIS.EASYHZ.Util.closePanel("FoodSearch");
         });
     $("#bank_search_panel_control").click(
         function () {
-            EasyHZ.Util.closePanel("bank_search_panel");
+            KoalaGIS.EASYHZ.Util.closePanel("BankSearch");
         });
     $("#life_search_panel_control").click(
         function () {
-            EasyHZ.Util.closePanel("life_search_panel");
+            KoalaGIS.EASYHZ.Util.closePanel("LifeSearch");
         });
     $("#tourspot_search_panel_control").click(
         function () {
-            EasyHZ.Util.closePanel("tourspot_search_panel");
+            KoalaGIS.EASYHZ.Util.closePanel("TourSpotSearch");
         });
     $("#hospital_search_panel_control").click(
         function () {
-            EasyHZ.Util.closePanel("hospital_search_panel");
+            KoalaGIS.EASYHZ.Util.closePanel("HospitalSearch");
         });
 
     //公交查询面板：公交换乘和线路查询切换

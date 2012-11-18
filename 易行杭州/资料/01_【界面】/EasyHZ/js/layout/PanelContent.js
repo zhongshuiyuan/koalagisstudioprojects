@@ -45,5 +45,6 @@ function FillTourPanelContent(panel){
 					 '</table>' +
 				  '</div>' +
 				'</div>';
-
+	panel.set_content(html);
 }
+

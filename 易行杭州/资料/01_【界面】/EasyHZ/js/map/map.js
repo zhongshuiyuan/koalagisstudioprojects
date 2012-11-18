@@ -104,8 +104,8 @@ KoalaGIS.EASYHZ.Map = KoalaGIS.EASYHZ.Class({
     */
     addControl: function () {
         //向地图中添加缩放控件
-        var ctrl_nav = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
-        this.map.addControl(ctrl_nav);
+//        var ctrl_nav = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
+//        this.map.addControl(ctrl_nav);
         //向地图中添加比例尺控件
         var ctrl_sca = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
         this.map.addControl(ctrl_sca);

@@ -9,16 +9,22 @@ var gtw = new GeometryToWKT();
 /*============================================
 *网站初始化
 *============================================*/
-//dojo.addOnLoad(function() {
-//    iniMaps(); //地图初始化
-//    initShowPanels();
-//});
-
 function addOnLoad() {
+    //初始化地图
     var divID = "mapcontent";
     var cityPt = new BMap.Point(120.161883, 30.27877);
     var level = 12;
-    var map = new KoalaGIS.EASYHZ.Map(divID,cityPt,level);    
+    var map = new KoalaGIS.EASYHZ.Map(divID, cityPt, level);
+//    //初始化面板
+//    var names = ["BusSearch", "CarSearch", "TourSearch", "ShoppingSearch", "EntertainmentSearch", "FoodSearch", "BankSearch", "LifeSearch", "TourSpotSearch", "HospitalSearch"];
+//    var panels = [];
+//    for (var i = 0; i < names.length; i++) {
+//        panels.push(new FuncPanel(names[i]));
+//    }
+//    //加入主界面中
+//    for (var j = 0; j < panels.length; j++) {
+//        $(window).get[0].appendChild(panels[j]);
+//    }
 };
 
 ///初始化显示面板

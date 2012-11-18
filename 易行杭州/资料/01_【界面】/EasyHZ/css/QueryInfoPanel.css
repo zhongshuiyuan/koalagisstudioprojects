@@ -2,9 +2,10 @@
 .func_panel
 {
 	position:absolute;
+    display:block;
     top:95px;
     right:10px;
-	width:260px;
+	width:300px;
 	z-index:2;
 }
 
@@ -301,3 +302,4 @@ a.func_panel_resize
 {
     background:url("../images/appbar/hospital_big.png") no-repeat scroll 0 0 transparent;
 }
+
