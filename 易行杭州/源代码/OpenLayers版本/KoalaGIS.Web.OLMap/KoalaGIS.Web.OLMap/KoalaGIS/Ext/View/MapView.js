@@ -3,7 +3,7 @@
 //date:2012-05-29 12:30
 //在线地图app
 
-Ext.define('KoalaGIS.container.OLMapView', {
+Ext.define('KoalaGIS.Ext.View.MapView', {
     extend: 'Ext.container.Viewport',
     layout: 'border',
     items: [{
@@ -30,7 +30,7 @@ Ext.define('KoalaGIS.container.OLMapView', {
         activeTab: 0,      // First tab active by default
         items: {
             title: 'Default Tab',
-            html: '<div id="divMap" style="width:100%;height:100%; border:solid 1px red">The first tab\'s content. Others may be added dynamically</div>'
+            html: '<div id="divMap" style="width:100%;height:100%; border:solid 1px red"></div>'
         }
     }]
 

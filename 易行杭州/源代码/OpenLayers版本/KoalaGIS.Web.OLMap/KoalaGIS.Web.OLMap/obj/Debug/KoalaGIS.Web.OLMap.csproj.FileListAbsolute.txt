@@ -3,3 +3,8 @@ D:\【06】个人资料\KoalaGIS Studio\Google SVN\trunk\KoalaGIS.Web.OLMap\Koal
 D:\【06】个人资料\KoalaGIS Studio\Google SVN\trunk\KoalaGIS.Web.OLMap\KoalaGIS.Web.OLMap\KoalaGIS.Web.OLMap\obj\Debug\ResolveAssemblyReference.cache
 D:\【06】个人资料\KoalaGIS Studio\Google SVN\trunk\KoalaGIS.Web.OLMap\KoalaGIS.Web.OLMap\KoalaGIS.Web.OLMap\obj\Debug\KoalaGIS.Web.OLMap.dll
 D:\【06】个人资料\KoalaGIS Studio\Google SVN\trunk\KoalaGIS.Web.OLMap\KoalaGIS.Web.OLMap\KoalaGIS.Web.OLMap\obj\Debug\KoalaGIS.Web.OLMap.pdb
+F:\个人资料\Google SVN\KoalaGIS SVN\易行杭州\源代码\OpenLayers版本\KoalaGIS.Web.OLMap\KoalaGIS.Web.OLMap\bin\KoalaGIS.Web.OLMap.dll
+F:\个人资料\Google SVN\KoalaGIS SVN\易行杭州\源代码\OpenLayers版本\KoalaGIS.Web.OLMap\KoalaGIS.Web.OLMap\bin\KoalaGIS.Web.OLMap.pdb
+F:\个人资料\Google SVN\KoalaGIS SVN\易行杭州\源代码\OpenLayers版本\KoalaGIS.Web.OLMap\KoalaGIS.Web.OLMap\obj\Debug\ResolveAssemblyReference.cache
+F:\个人资料\Google SVN\KoalaGIS SVN\易行杭州\源代码\OpenLayers版本\KoalaGIS.Web.OLMap\KoalaGIS.Web.OLMap\obj\Debug\KoalaGIS.Web.OLMap.dll
+F:\个人资料\Google SVN\KoalaGIS SVN\易行杭州\源代码\OpenLayers版本\KoalaGIS.Web.OLMap\KoalaGIS.Web.OLMap\obj\Debug\KoalaGIS.Web.OLMap.pdb

@@ -15,8 +15,8 @@
     
     <!--<script type="text/javascript" src="http://localhost/OpenLayers/OpenLayers-2.11/OpenLayers.js"></script>-->
 
-
-    <script type="text/javascript" src="KoalaGIS/openlayers/KoalaGIS.Layer.WMTS.Baidu.js"></script>
+    <script type="text/javascript" src="KoalaGIS/OpenLayers/KoalaGIS.OpenLayers.js"></script>
+    <script type="text/javascript" src="KoalaGIS/OpenLayers/KoalaGIS.OpenLayers.Baidu.js"></script>
 
 
     <script type="text/javascript">
@@ -63,7 +63,7 @@
                 res[i] = Math.pow(2, 18 - i);
             }
 
-            var baidu = new KoalaGIS.Layer.WMTS.Baidu(
+            var baidu = new KoalaGIS.OpenLayers.Baidu.WmtsLayer(
                 'baidu',
                 'http://q3.baidu.com/it/',
                 { isBaseLayer: true, 
