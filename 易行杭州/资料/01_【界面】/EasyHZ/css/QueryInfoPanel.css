@@ -1,4 +1,9 @@
 ﻿/*==============================查询面板样式======================================*/
+img
+{
+    border:medium none;
+}
+
 .func_panel
 {
 	position:absolute;
@@ -303,3 +308,47 @@ a.func_panel_resize
     background:url("../images/appbar/hospital_big.png") no-repeat scroll 0 0 transparent;
 }
 
+/*==============================公交查询样式======================================*/
+.menucontainer
+{
+    margin:0px 0px 0px 0px;
+}
+
+#startStop
+{
+    position:relative;
+    padding:5px 0 0 5px;
+}
+
+.busInput
+{
+    bottom: 11px;
+    padding: 3px 0 3px 3px;
+    position: relative;
+    width: 200px;
+}
+
+.qubie
+{
+    bottom: 6px;
+    position: relative;
+}
+
+#endStop
+{
+    padding:0px 0 0 5px;
+}
+
+.busBtn
+{
+    bottom:5px;
+    color:#0E3871;
+    display:block;
+    font-size:12px;
+    height:21px;
+    width:66px;
+    padding:5px 0 0;
+    position:absolute;
+    right:10px;
+    text-align:center;
+}
