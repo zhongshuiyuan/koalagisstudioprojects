@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<link type="text/css" href="css/QueryInfoPanel.css" rel="stylesheet" />
+<link type="text/css" href="css/Index.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+<title>展示公交换乘的结果面板</title>
+</head>
+<body>
+    <!--公交查询面板-->
+    <div id="bus_search_panel" class="func_panel">
+      <!--面板标题-->
+      <div id="bus_search_panel_title" class="func_panel_title">
+        <div id="bus_search_panel_titleleft" class="func_panel_title_left"></div>
+        <div id="bus_search_panel_titleright" class="func_panel_title_right"></div>
+        <div id="bus_search_panel_titlebg" class="func_panel_title_bg"></div>
+      </div>
+      <!--面板内容区-->
+      <div id="bus_search_panel_content" class="func_panel_content">
+        <div id="bus_search_panel_contentleft" class="func_panel_content_left"></div>
+        <div id="bus_search_panel_contentright" class="func_panel_content_right"></div>
+        <div id="bus_search_panel_contentbg" class="func_panel_content_bg">
+          <div id="bus_search_panel_contenttext" class="func_panel_content_text">
+            <!--公交查询类型显示区域-->
+            <div id="meun1" class="menucontainer">
+              <!--内容根据用户选择进行切换-->
+              <!--公交查询-->
+              <div>
+                <div id="startStop">
+                  <img alt="" class="" src="images/bus/qi.gif" style="margin:0px 0px;" />
+                  <input type="text" class="busInput" size="25" style="color:Black;" />
+                  <img alt="" class="qubie" src="images/bus/poi08.gif" style="cursor:pointer;" title="在地图上选择起点" />
+                </div>
+                <div id="endStop">
+                  <img alt="" class="" src="images/bus/zhong.gif" style="margin:0pt 0px;" />
+                  <input class="busInput" size="25" style="color:Black;" />
+                  <img alt="" class="qubie" src="images/bus/poi09.gif" style="cursor:pointer;" title="在地图上选择终点" />
+                </div>
+              </div>
+              <!--线路查询-->
+              <div id="c2">
+                <ul id="a2" class="ul" style="display:none">
+                  <li class="li1">
+                    <input id="lineKey" class="input02" type="text" style="font-family:微软雅黑; font-size:10pt; color:Black;" onkeydown="busLineEventEnter()" />
+                    <input class="button_x1" type="button" onclick="" value="搜 索" />
+                  </li>
+                </ul>
+              </div>
+              <!--公交查询类型切换-->
+              <div style="width:240px; height:25px; position:relative; margin:5px 0px 0px 37px;">
+                <a class="" href="javascript://" style="cursor:text; text-decoration:none; color:White;">公交换乘</a>
+                -
+                <a class="" href="javascript://" style="cursor:pointer; text-decoration:none;">公交线路</a>
+                <div class="busBtn" style="cursor:pointer; background:url(images/bus/search.jpg);"></div>
+              </div>
+            </div>
+            <div id="searchTabCon" style="display:block">
+              <div id="startEndOption2" class="map-bus" style="display:block">
+                <!--起点-->
+                <div id="divMapDriverBegin" class="map-bus-begin" style="border-color:rgb(6,126,192);">
+                  <!--起点选择框顶部-->
+                  <div id="bt_driverStartList" class="map-bus-top">
+                    <div class="map-bus-topimg"></div>
+                    <span>起点：</span>
+                    <strong id="selectStartInputName2"></strong>
+                    <div class="map-bus-arrowimg" style="display:none;"></div>
+                  </div>
+                  <!--辅助元素，帮助清空浮动-->
+                  <div class="clear"></div>
+                  <!--the details for bus start stops-->
+                  <div id="driverSC" class="map-bus-main" style="position:relative;height:318px;display:block;">
+                    <dl id="selectStartULID2" class="map-result-cont" style="display:block">
+                      <!--动态添加候选站点-->
+                    </dl>
+                    <div class="no_answer" style="display:none;">抱歉，没有找到您输入的位置点！请尝试其他关键字。</div>
+                  </div>
+                </div>
+                <div id="divMapDriverEnd" class="map-bus-end" style="border-color:rgb(52,61,80);">
+                  <!--终点选择框顶部-->
+                  <div id="bt_driverEndList" class="map-bus-top map-bus-end-topbc">
+                    <div class="map-bus-endimg"></div>
+                    <span>终点：</span>
+                    <strong id="selectEndInputName2"></strong>
+                    <div class="map-bus-arrowimg"" style="display:none"></div>
+                  </div>
+                  <div class="clear"></div>
+                  <!--the details for bus end stops-->
+                  <div id="driverEC" class="map-bus-main" style="position:relative;height:318px;display:none;">
+                    <dl id="selectEndULID2" class="map-result-cont">
+                    <!--动态添加内容-->
+                    </dl>
+                    <div class="no_answer" style="display:none;">抱歉，没有找到您输入的位置点！请尝试其他关键字。</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--面板底部-->
+      <div id="bus_search_panel_foot" class="func_panel_foot">
+        <div id="bus_search_panel_footleft" class="func_panel_foot_left"></div>
+        <div id="bus_search_panel_footright" class="func_panel_foot_right"></div>
+        <div id="bus_search_panel_footbg" class="func_panel_foot_bg"></div>
+      </div>
+      <div id="bus_search_panel_icon" class="func_panel_icon"></div>
+      <div id="bus_search_panel_sepline" class="func_panel_sepline"></div>
+      <div id="bus_search_panel_titletext" class="func_panel_title_text">公交查询</div>
+      <div id="bus_search_panel_control" class="func_panel_control">
+        <a id="bus_search_panel_controlclose" class="func_panel_control_icon func_panel_close" title="关闭"></a>
+      </div>
+    </div>
+</body>
+</html>
+<script language="javascript" type="text/javascript">
+    $(".func_panel").css("height", document.body.clientHeight - /*顶部和底部*/125 - /*和底部保持一定距离*/10 + "px");
+</script>
