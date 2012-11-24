@@ -1,0 +1,10 @@
+<PAMDataset>
+  <SRS>PROJCS[&quot;Beijing_1954_3_Degree_GK_CM_102E&quot;,GEOGCS[&quot;GCS_Beijing_1954&quot;,DATUM[&quot;Beijing_1954&quot;,SPHEROID[&quot;Krasovsky_1940&quot;,6378245.0,298.3]],PRIMEM[&quot;Greenwich&quot;,0.0],UNIT[&quot;Degree&quot;,0.0174532925199433]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;False_Easting&quot;,500000.0],PARAMETER[&quot;False_Northing&quot;,0.0],PARAMETER[&quot;Central_Meridian&quot;,102.0],PARAMETER[&quot;Scale_Factor&quot;,1.0],PARAMETER[&quot;Latitude_Of_Origin&quot;,0.0],UNIT[&quot;Meter&quot;,1.0]]</SRS>
+  <GeoTransform> 7.7004668317662959e+004, 2.6458386249760224e-001, 1.8189894035458565e-012, 8.5036564431475068e+004, 1.8189894035458565e-012,-2.6458386249760224e-001</GeoTransform>
+  <Metadata domain="IMAGE_STRUCTURE">
+    <MDI key="INTERLEAVE">PIXEL</MDI>
+  </Metadata>
+  <Metadata domain="ESRI">
+    <MDI key="PyramidResamplingType">NEAREST</MDI>
+  </Metadata>
+</PAMDataset>
