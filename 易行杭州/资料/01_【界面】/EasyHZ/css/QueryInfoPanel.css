@@ -10,7 +10,7 @@ img
     display:block;
     top:95px;
     right:10px;
-	width:300px;
+	width:320px;
 	z-index:2;
 }
 
@@ -105,7 +105,7 @@ img
 	bottom:0px;
 	right:5px;
 	left:5px;
-	overflow:auto;
+    overflow:hidden;
 	scrollbar-face-color :#333333;
 	scrollbar-3d-light-color :white;
 	scrollbar-arrow-color:white;
@@ -351,4 +351,213 @@ a.func_panel_resize
     position:absolute;
     right:10px;
     text-align:center;
+}
+
+.map-bus
+{
+    width:100%;
+}
+
+.map-bus-begin
+{
+    border:1px solid #067EC0;
+    border-radius:3px 3px 3px 3px;
+    box-shadow:0 0 4px #9ED9F9 inset;
+}
+
+.map-bus-top
+{
+    background:url("../images/bus/map-busbg1.gif") repeat-x;
+    border-radius:3px 3px 0 0;
+    color:#067EC0;
+    cursor:pointer;
+    float:left;
+    height:26px;
+    padding-top:8px;
+    position:relative;
+    font-size:14px;
+    padding-left:40px;
+    width:257px;
+}
+
+.map-bus-topimg
+{
+    background:url("../images/bus/icon1.png") no-repeat;
+    background-position:0 -215px;
+    height:22px;
+    left:10px;
+    position:absolute;
+    top:7px;
+    width:23px;
+}
+
+.map-bus-top span
+{
+    display:block;
+    float:left;
+}
+
+.map-bus-top strong
+{
+    display:block;
+    float:left;
+    height:26px;
+    line-height:26px;
+    margin-top:-3px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    width:200px;
+}
+
+.map-bus-arrowimg
+{
+    background:url("../images/bus/map-under.gif") no-repeat;
+    cursor:pointer;
+    height:9px;
+    position:absolute;
+    right:10px;
+    top:13px;
+    width:14px;
+}
+
+.clear
+{
+    clear:both;
+}
+
+.map-bus-main
+{
+    position:relative;
+    height:220px;
+    display:block;
+    margin-bottom:10px;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+
+dl.map-result-cont
+{
+    padding:5px 0 0;
+    width:100%;
+}
+
+dl.map-result-cont dd
+{
+    cursor:pointer;
+    padding:0 0 0 12px;
+}
+
+.map-result-img-0
+{
+    background:url("../images/bus/icon1.png") no-repeat;
+    background-position:-80px 0;
+}
+
+.map-result-img-1
+{
+    background:url("../images/bus/icon1.png") no-repeat;
+    background-position:-80px -50px;
+}
+
+.map-result-img-2
+{
+    background:url("../images/bus/icon1.png") no-repeat;
+    background-position:-80px -100px;
+}
+
+.map-result-img-3
+{
+    background:url("../images/bus/icon1.png") no-repeat;
+    background-position:-80px -150px;
+}
+
+.map-result-img-4
+{
+    background:url("../images/bus/icon1.png") no-repeat;
+    background-position:-80px -200px;
+}
+
+.map-result-img-5
+{
+    background:url("../images/bus/icon1.png") no-repeat;
+    background-position:-80px -250px;
+}
+
+.map-result-img-6
+{
+    background:url("../images/bus/icon1.png") no-repeat;
+    background-position:-80px -300px;
+}
+
+.map-result-img-7
+{
+    background:url("../images/bus/icon1.png") no-repeat;
+    background-position:-80px -350px;
+}
+
+.map-result-img-8
+{
+    background:url("../images/bus/icon1.png") no-repeat;
+    background-position:-80px -400px;
+}
+
+.map-result-img-9
+{
+    background:url("../images/bus/icon1.png") no-repeat;
+    background-position:-80px -450px;
+}
+
+.map-result-img-0,
+.map-result-img-1,
+.map-result-img-2,
+.map-result-img-3,
+.map-result-img-4,
+.map-result-img-5,
+.map-result-img-6,
+.map-result-img-7,
+.map-result-img-8,
+.map-result-img-9
+{
+    display:inline;
+    float:left;
+    height:35px;
+    margin:5px 0 16px;
+    width:21px
+}
+
+dl dd .map-result-ul1
+{
+    margin:0 0 0 30px;
+    padding:5px 0 0 8px;
+}
+
+.map-result-ul1
+{
+    display:block;
+    width:200px;
+}
+
+dl.map-result-cont dd h3
+{
+    color:#076EC0;
+}
+
+.map-result-ul1 h3
+{
+    font-size:14px;
+    height:20px;
+    overflow:hidden;
+    width:200px;
+}
+
+.maphei25 .button2
+{
+    float:left;
+}
+
+.button2
+{
+    background:url("../images/bus/button1.gif") repeat-x;
+    border:1px
 }
