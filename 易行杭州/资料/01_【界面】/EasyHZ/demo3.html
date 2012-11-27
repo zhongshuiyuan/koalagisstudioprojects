@@ -26,7 +26,7 @@
             <div id="meun1" class="menucontainer">
               <!--内容根据用户选择进行切换-->
               <!--公交查询-->
-              <div>
+              <div id="busStop">
                 <div id="startStop">
                   <img alt="" class="" src="images/bus/qi.gif" style="margin:0px 0px;" />
                   <input type="text" class="busInput" size="25" style="color:Black;" />
@@ -39,7 +39,7 @@
                 </div>
               </div>
               <!--线路查询-->
-              <div id="c2">
+              <div id="line">
                 <ul id="a2" class="ul" style="display:none">
                   <li class="li1">
                     <input id="lineKey" class="input02" type="text" style="font-family:微软雅黑; font-size:10pt; color:Black;" onkeydown="busLineEventEnter()" />
@@ -58,37 +58,173 @@
             <div id="searchTabCon" style="display:block">
               <div id="startEndOption2" class="map-bus" style="display:block">
                 <!--起点-->
-                <div id="divMapDriverBegin" class="map-bus-begin" style="border-color:rgb(6,126,192);">
+                <div id="divMapDriverBegin" class="map-bus-begin">
                   <!--起点选择框顶部-->
                   <div id="bt_driverStartList" class="map-bus-top">
                     <div class="map-bus-topimg"></div>
                     <span>起点：</span>
                     <strong id="selectStartInputName2"></strong>
+                    <!--"0"表示未展开,"1"表示展开-->
+                    <input id="selectStartInputFlag2" type="hidden" value="1" />
                     <div class="map-bus-arrowimg" style="display:none;"></div>
                   </div>
                   <!--辅助元素，帮助清空浮动-->
                   <div class="clear"></div>
-                  <!--the details for bus start stops-->
-                  <div id="driverSC" class="map-bus-main" style="position:relative;height:318px;display:block;">
+                  <!--候选起点内容区-->
+                  <div id="driverSC" class="map-bus-main">
                     <dl id="selectStartULID2" class="map-result-cont" style="display:block">
                       <!--动态添加候选站点-->
+                      <dd id="s_0" onclick="openMarker">
+                        <div class="map-result-img-0"></div>
+                        <div class="map-result-ul1">
+                          <h3>武林门</h3>
+                          <div class="maphei25">
+                            <div class="button2" onmouseout="remove_hover()" onmouseover="even_hover()" onclick="" style="width:70px;display:block;">设为起点</div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </dd>
+                      <dd id="s_1" onclick="openMarker">
+                        <div class="map-result-img-1"></div>
+                        <div class="map-result-ul1">
+                          <h3>武林门汽车站</h3>
+                          <div class="maphei25">
+                            <div class="button2" onmouseout="remove_hover()" onmouseover="even_hover()" onclick="" style="width:70px;display:block;">设为起点</div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </dd>
+                      <dd id="s_2" onclick="openMarker">
+                        <div class="map-result-img-2"></div>
+                        <div class="map-result-ul1">
+                          <h3>武林门</h3>
+                          <div class="maphei25">
+                            <div class="button2" onmouseout="remove_hover()" onnmouseover="even_hover()" onclick="" style="width:70px;display:block;">设为起点</div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </dd>
+                      <dd id="s_3" onclick="openMarker">
+                        <div class="map-result-img-3"></div>
+                        <div class="map-result-ul1">
+                          <h3>武林门</h3>
+                          <div class="maphei25">
+                            <div class="button2" onmouseout="remove_hover()" onnmouseover="even_hover()" onclick="" style="width:70px;display:block;">设为起点</div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </dd>
+                      <dd id="s_4" onclick="openMarker">
+                        <div class="map-result-img-4"></div>
+                        <div class="map-result-ul1">
+                          <h3>武林门</h3>
+                          <div class="maphei25">
+                            <div class="button2" onmouseout="remove_hover()" onnmouseover="even_hover()" onclick="" style="width:70px;display:block;">设为起点</div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </dd>
+                      <dd id="s_5" onclick="openMarker">
+                        <div class="map-result-img-5"></div>
+                        <div class="map-result-ul1">
+                          <h3>武林门</h3>
+                          <div class="maphei25">
+                            <div class="button2" onmouseout="remove_hover()" onnmouseover="even_hover()" onclick="" style="width:70px;display:block;">设为起点</div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </dd>
                     </dl>
                     <div class="no_answer" style="display:none;">抱歉，没有找到您输入的位置点！请尝试其他关键字。</div>
                   </div>
                 </div>
-                <div id="divMapDriverEnd" class="map-bus-end" style="border-color:rgb(52,61,80);">
+                <!--终点-->
+                <div id="divMapDriverEnd" class="map-bus-end" style="border-color:#343D50;">
                   <!--终点选择框顶部-->
                   <div id="bt_driverEndList" class="map-bus-top map-bus-end-topbc">
                     <div class="map-bus-endimg"></div>
                     <span>终点：</span>
                     <strong id="selectEndInputName2"></strong>
-                    <div class="map-bus-arrowimg"" style="display:none"></div>
+                    <input id="selectEndInputFlag2" type="hidden" value="0" />
+                    <div class="map-bus-arrowimg"" style="display:block"></div>
                   </div>
                   <div class="clear"></div>
-                  <!--the details for bus end stops-->
+                  <!--候选终点内容区-->
                   <div id="driverEC" class="map-bus-main" style="position:relative;height:318px;display:none;">
                     <dl id="selectEndULID2" class="map-result-cont">
                     <!--动态添加内容-->
+                      <dd id="e_0" onclick="openMarker">
+                        <div class="map-result-img-0"></div>
+                        <div class="map-result-ul1">
+                          <h3>武林门</h3>
+                          <div class="maphei25">
+                            <div class="button2" onmouseout="remove_hover()" onmouseover="even_hover()" onclick="" style="width:70px;display:block;">设为起点</div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </dd>
+                      <dd id="e_1" onclick="openMarker">
+                        <div class="map-result-img-1"></div>
+                        <div class="map-result-ul1">
+                          <h3>武林门汽车站</h3>
+                          <div class="maphei25">
+                            <div class="button2" onmouseout="remove_hover()" onmouseover="even_hover()" onclick="" style="width:70px;display:block;">设为起点</div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </dd>
+                      <dd id="e_2" onclick="openMarker">
+                        <div class="map-result-img-2"></div>
+                        <div class="map-result-ul1">
+                          <h3>武林门</h3>
+                          <div class="maphei25">
+                            <div class="button2" onmouseout="remove_hover()" onnmouseover="even_hover()" onclick="" style="width:70px;display:block;">设为起点</div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </dd>
+                      <dd id="e_3" onclick="openMarker">
+                        <div class="map-result-img-3"></div>
+                        <div class="map-result-ul1">
+                          <h3>武林门</h3>
+                          <div class="maphei25">
+                            <div class="button2" onmouseout="remove_hover()" onnmouseover="even_hover()" onclick="" style="width:70px;display:block;">设为起点</div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </dd>
+                      <dd id="e_4" onclick="openMarker">
+                        <div class="map-result-img-4"></div>
+                        <div class="map-result-ul1">
+                          <h3>武林门</h3>
+                          <div class="maphei25">
+                            <div class="button2" onmouseout="remove_hover()" onnmouseover="even_hover()" onclick="" style="width:70px;display:block;">设为起点</div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </dd>
+                      <dd id="e_5" onclick="openMarker">
+                        <div class="map-result-img-5"></div>
+                        <div class="map-result-ul1">
+                          <h3>武林门</h3>
+                          <div class="maphei25">
+                            <div class="button2" onmouseout="remove_hover()" onnmouseover="even_hover()" onclick="" style="width:70px;display:block;">设为起点</div>
+                          </div>
+                          <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                      </dd>
                     </dl>
                     <div class="no_answer" style="display:none;">抱歉，没有找到您输入的位置点！请尝试其他关键字。</div>
                   </div>
@@ -114,5 +250,11 @@
 </body>
 </html>
 <script language="javascript" type="text/javascript">
-    $(".func_panel").css("height", document.body.clientHeight - /*顶部和底部*/125 - /*和底部保持一定距离*/10 + "px");
+    $(document).ready(function () {
+        $(".func_panel").css("height", document.body.clientHeight - /*顶部和底部*/125 - /*和底部保持一定距离*/10 + "px");
+        $("#bt_driverStartList").click(function () {
+            alert("~~");
+        });
+        $("#bt_driverEndList")
+    })
 </script>
