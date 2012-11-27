@@ -1,4 +1,10 @@
-﻿/*==============================查询面板样式======================================*/
+﻿
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+}
+
+
+/*==============================查询面板样式======================================*/
 img
 {
     border:medium none;
@@ -376,8 +382,8 @@ a.func_panel_resize
     padding-top:8px;
     position:relative;
     font-size:14px;
-    padding-left:40px;
-    width:257px;
+    /*padding-left:40px;*/
+    width:100%;
 }
 
 .map-bus-topimg
@@ -395,6 +401,7 @@ a.func_panel_resize
 {
     display:block;
     float:left;
+    margin-left:40px;
 }
 
 .map-bus-top strong
@@ -535,7 +542,12 @@ dl dd .map-result-ul1
 .map-result-ul1
 {
     display:block;
-    width:200px;
+    width:230px;
+}
+
+.map-result-ul1bg
+{
+    background:none repeat scroll 0 0 #D9ECF9;
 }
 
 dl.map-result-cont dd h3
@@ -559,5 +571,73 @@ dl.map-result-cont dd h3
 .button2
 {
     background:url("../images/bus/button1.gif") repeat-x;
-    border:1px
+    border:1px solid #C0C0C0;
+    color:#343D50;
+    text-shadow:1px 1px 0 #FFFFFF;
 }
+
+.button2
+{
+    border-radius:0 5px 5px 0;
+    cursor:pointer;
+    display:inline;
+    font-size:12px;
+    height:23px;
+    line-height:23px;
+    margin-right:8px;
+    text-align:center;
+}
+
+.button1-hover,.button2-hover,.button3-hover
+{
+    background:none repeat scroll 0 0 #FFFFFF;
+    border:1px solid #2B91C9;
+    box-shadow: 0 0 3px #7FDCFD;
+    color:#0980C1;
+}
+
+.map-bus-end
+{
+    border:1px solid #343D50;
+    border-radius:3px 3px 3px 3px;
+    width:100%;
+    margin:10px 10px 10px 0;
+}
+
+.map-bus-end-topbc
+{
+    background:url("../images/bus/map-busbg2.gif") repeat-x;
+    border-radius:3px 3px 0 0;
+    color:#08202F;
+}
+
+.map-bus-endimg
+{
+    background:url("../images/bus/icon1.png") no-repeat;
+    background-position:0 -264px;
+    height:22px;
+    left:10px;
+    position:absolute;
+    top:7px;
+    width:23px;
+}
+
+.map-bus-end span
+{
+    display:block;
+    float:left;
+}
+
+.map-bus-end strong
+{
+    display:block;
+    float:left;
+    height:26px;
+    line-height:26px;
+    margin-top:-3px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    width:200px;
+}
+
