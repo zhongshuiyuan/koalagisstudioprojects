@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>带样式的结果面板</title>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+<style>
+body {font-size:14px;line-height:20px;}
+</style>
+</head>
+<body>
+<div style="width:500px;height:340px;border:1px solid gray;float:left;" id="container"></div>
+<div style="width:400px;height:340px;border:1px solid gray;float:left;border-left:none;"id="milkResult"></div>
+</body>
+</html>
+<script type="text/javascript">
+    var map = new BMap.Map("container");
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 14);
+
+    function milkSearchFun() {
+        var milkStartTitle = tansit.getResults().getStart().title;  //公交导航起点的名字
+        var milkEndTitle = tansit.getResults().getEnd().title;  //公交导航终点的名字
+        var milkPlan = tansit.getResults().getPlan(0);   //获取第一条公交导航
+        var milkDescription = milkPlan.getDescription();    //获取第一条公交导航的全部描述（带html）
+
+        var milkLine = milkPlan.getLine(0).title;       //获取公交线路（比如331路）的名称
+        var milkLineGeton = milkPlan.getLine(0).getGetOnStop().title;       //获取上车点站名
+        var milkLineGetoff = milkPlan.getLine(0).getGetOffStop().title;     //获取下车点站名
+
+        var milkRouteNum = milkPlan.getNumRoutes();   //提前判断一下，如果为2，即表示无换乘.
+        var milkRouteStart = milkPlan.getRoute(0).getDistance();  //从起点到上车车站的距离
+        var milkRouteEnd = milkPlan.getRoute(1).getDistance();      //从下车车站到终点的距离
+
+        document.getElementById("milkResult").innerHTML =
+        "<p style='background:url(start.jpg) no-repeat 0 center;padding:0 0 0 30px'><b style='color:#fff;background:#ff55cc;padding:2px;'>" + milkStartTitle + "</b></p>" +
+        "<p style='background:url(walk.jpg) no-repeat 0 center;padding:0 0 0 30px'>步行<b>" + milkRouteStart + "</b>，至" + milkStartTitle + "</p>" +
+        "<p style='background:url(bus.jpg) no-repeat 0 center;padding:0 0 0 30px'>在<b>" + milkLineGeton + "</b>上车,乘坐<b>" + milkLine + "</b>,在<b>" + milkLineGetoff + "</b>下车</p>" +
+        "<p style='background:url(walk.jpg) no-repeat 0 center;padding:0 0 0 30px'>步行<b>" + milkRouteEnd + "</b>，至终点</p>" +
+        "<p style='background:url(end.jpg) no-repeat 0 center;padding:0 0 0 30px'><b style='color:#fff;background:#ff55cc;padding:2px;'>" + milkEndTitle + "</b></p>";
+
+    }
+
+    var tansit = new BMap.TransitRoute(map, { renderOptions: { map: map, autoViewport: true }, onSearchComplete: milkSearchFun });
+    tansit.search("故宫", "颐和园");
+</script>
