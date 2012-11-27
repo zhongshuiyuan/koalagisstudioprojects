@@ -252,9 +252,22 @@
 <script language="javascript" type="text/javascript">
     $(document).ready(function () {
         $(".func_panel").css("height", document.body.clientHeight - /*顶部和底部*/125 - /*和底部保持一定距离*/10 + "px");
+        //展开起点候选栏，折叠终点候选栏
         $("#bt_driverStartList").click(function () {
-            alert("~~");
+            if ($("#selectStartInputFlag2").attr("value") == "0") {
+
+            }
         });
-        $("#bt_driverEndList")
+
+        //展开终点候选栏，折叠起点候选栏
+        $("#bt_driverEndList").click(function () {
+            if ($("#selectEndInputFlag2").attr("value") == "0") {
+                $("#driverSC").css("display", "none");
+                $("#driverSC").addClass("map-bus-end-topbc");
+                $("#driverEC").css("display", "block");
+                $("#driverEC").toggleClass("map-bus-end-topbc");
+                $("#selectEndInputFlag2").attr("value", "1");
+            }
+        });
     })
 </script>
