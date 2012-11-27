@@ -1,0 +1,166 @@
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+  <style type="text/css">
+    body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
+    #l-map{height:90%;width:78%;float:left;border-right:2px solid #bcbcbc;}
+    #r-result{height:90%;width:20%;float:left;}
+  </style>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.3"></script>
+  <title>展示公交换乘的结果面板</title>
+  </head>
+  <body>
+    <div id="l-map"></div>
+    <div id="r-result"></div>
+    <input id="start" type="text" />
+    <input id="end" type="text" />
+    <input id="find" type="button" value="查询" onclick="BusFind()" />
+  </body>
+</html>
+<script type="text/javascript">
+    var map = new BMap.Map("l-map");            
+    //定位杭州
+    map.centerAndZoom(new BMap.Point(120.161883, 30.27877), 12);
+    //支持滚轮
+    map.enableScrollWheelZoom();
+    //创建自动提示
+    var ac = new BMap.Autocomplete({
+        "input": "start",
+        "location": map
+//        onSearchComplete: function(result){
+//            alert("~~~");
+//        }
+    });
+
+//    ac.addEventListener("onhighlight", function (e) {
+//        var str = "";
+//        var _value = e.fromitem.value;
+//    });
+
+    //test begin~
+//    startResults = null;
+//    var startOption = {
+//        onSearchComplete: function (result) {
+//            if (startSearch.getStatus() == BMAP_STATUS_SUCCESS) {
+//                startResults = startSearch.getResults();
+//            }
+//        }
+//    };
+//    startSearch = new BMap.LocalSearch(mainMap, startOption);
+//    startSearch.search("wulin", { forceLocal: true });
+//    function BusFind() {
+//        index++;
+//        startSearch.gotoPage(index);
+//    }
+
+    //test end~
+
+
+//    var transit = new BMap.TransitRoute('杭州', {
+//        renderOptions: {
+//            map: _map,
+//            panel: "r-result",
+//            autoViewport: true
+//        },
+//        policy: "BMAP_TRANSIT_POLICY_LEAST_TIME",
+//        onSearchComplete: function (result) {
+//            if (transit.getStatus() == BMAP_STATUS_SUCCESS) {
+//                // 从结果对象中获取起点和终点信息
+//                var start = result.getStart().title;
+//                var end = result.getEnd().title;
+
+//                // 直接获取第一个方案
+//                var plan = result.getPlan(0);
+//                // 获取步行线路与公交线路个数总和，用于遍历
+//                var total = plan.getNumRoutes() + plan.getNumLines();
+
+//                var description = ['从' + start];
+//                var addEndTitle = true;
+//                for (var i = 0; i < total; i++) {
+//                    if (i % 2 == 0) {
+//                        // i为偶数
+//                        // 处理第一个步行描述逻辑
+//                        if (i / 2 == 0) {
+//                            if (plan.getRoute(i / 2).getDistance(false) == 0) {
+//                                description = ['从'];
+//                            }
+//                        }
+//                        // 处理最后一个步行描述逻辑
+//                        if (i / 2 == plan.getNumRoutes() - 1) {
+//                            if (plan.getRoute(i / 2).getDistance(false) == 0) {
+//                                addEndTitle = false;
+//                            }
+//                        }
+//                        if (plan.getRoute(i / 2).getDistance(false) > 0) {
+//                            description.push('步行约' + plan.getRoute(i / 2).getDistance(true) + '至');
+//                        }
+//                    } else {
+//                        // i为奇数
+//                        var line = plan.getLine((i - 1) / 2);
+//                        if (i == 0) {
+//                            description.push(line.getGetOnStop().title + ', ');
+//                        }
+//                        if (i > 0) {
+//                            if (plan.getRoute((i - 1) / 2).getDistance(false) > 0) {
+//                                description.push(line.getGetOnStop().title + ', ');
+//                            }
+//                        }
+//                        description.push('乘坐' + line.title + ', ');
+//                        description.push('经过' + line.getNumViaStops() + '站');
+//                        description.push('在' + line.getGetOffStop().title + '站下车，');
+//                    }
+//                }
+//                if (addEndTitle) {
+//                    description.push(end + '。');
+//                }
+//                // 替换可能出现的末尾位置的逗号
+//                var descriptionStr = description.join('').replace(/\uff0c$/, '。');
+//            }
+//        }
+//    });
+
+//    transit.search("密渡桥路", "丰潭路");
+//    //transit.search({ title: '我这里', point: new BMap.Point(116.315157, 39.987946) },
+//    //           { title: '你这里', point: new BMap.Point(116.371499, 39.880394) });
+
+//    // 添加起点覆盖物
+//    function addStart(point, title) {
+//        map.addOverlay(new BMap.Marker(point, {
+//            title: title,
+//            icon: new BMap.Icon('http://images.cnblogs.com/cnblogs_com/jz1108/329471/o_blue.png', new BMap.Size(38, 41), {
+//                anchor: new BMap.Size(4, 36)
+//            })
+//        }));
+//    }
+
+//    // 添加终点覆盖物
+//    function addEnd(point, title) {
+//        map.addOverlay(new BMap.Marker(point, {
+//            title: title,
+//            icon: new BMap.Icon('http://images.cnblogs.com/cnblogs_com/jz1108/329471/o_red.png', new BMap.Size(38, 41), {
+//                anchor: new BMap.Size(4, 36)
+//            })
+//        }));
+//    }
+
+//    // 添加路线
+//    function addWalkRoute(path) {
+//        map.addOverlay(new BMap.Polyline(path, {
+//            strokeColor: 'black',
+//            strokeOpacity: 0.7,
+//            strokeWeight: 4,
+//            strokeStyle: 'dashed',
+//            enableClicking: false
+//        }));
+//    }
+
+//    function addLine(path) {
+//        map.addOverlay(new BMap.Polyline(path, {
+//            strokeColor: 'blue',
+//            strokeOpacity: 0.6,
+//            strokeWeight: 5,
+//            enableClicking: false
+//        }));
+//    }
+
+</script>
