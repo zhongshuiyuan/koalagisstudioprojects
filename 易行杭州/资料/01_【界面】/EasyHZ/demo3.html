@@ -24,7 +24,6 @@
           <div id="bus_search_panel_contenttext" class="func_panel_content_text">
             <!--公交查询类型显示区域-->
             <div id="meun1" class="menucontainer">
-              <!--内容根据用户选择进行切换-->
               <!--公交查询-->
               <div id="busStop">
                 <div id="startStop">
@@ -65,7 +64,7 @@
                     <span>起点：</span>
                     <strong id="selectStartInputName2"></strong>
                     <!--"0"表示未展开,"1"表示展开-->
-                    <input id="selectStartInputFlag2" type="hidden" value="1" />
+                    <input id="selectStartInputFlag2" type="hidden" value="0" />
                     <div class="map-bus-arrowimg" style="display:none;"></div>
                   </div>
                   <!--辅助元素，帮助清空浮动-->
@@ -145,14 +144,14 @@
                   </div>
                 </div>
                 <!--终点-->
-                <div id="divMapDriverEnd" class="map-bus-end" style="border-color:#343D50;">
+                <div id="divMapDriverEnd" class="map-bus-end">
                   <!--终点选择框顶部-->
                   <div id="bt_driverEndList" class="map-bus-top map-bus-end-topbc">
                     <div class="map-bus-endimg"></div>
                     <span>终点：</span>
                     <strong id="selectEndInputName2"></strong>
                     <input id="selectEndInputFlag2" type="hidden" value="0" />
-                    <div class="map-bus-arrowimg"" style="display:block"></div>
+                    <div class="map-bus-arrowimg" style="display:block;"></div>
                   </div>
                   <div class="clear"></div>
                   <!--候选终点内容区-->
@@ -252,21 +251,30 @@
 <script language="javascript" type="text/javascript">
     $(document).ready(function () {
         $(".func_panel").css("height", document.body.clientHeight - /*顶部和底部*/125 - /*和底部保持一定距离*/10 + "px");
-        //展开起点候选栏，折叠终点候选栏
+        //展开起点候选栏，折叠终点候选栏,同时变更结果框样式
         $("#bt_driverStartList").click(function () {
-            if ($("#selectStartInputFlag2").attr("value") == "0") {
-
+            if ($("#bt_driverStartList").hasClass("map-bus-end-topbc")) {
+                $("#driverEC").css("display", "none");
+                $("#bt_driverEndList").addClass("map-bus-end-topbc");
+                $("#driverSC").css("display", "block");
+                $("#driverSC").removeClass(["map-bus-end-topbc"]);
+                $("#divMapDriverBegin").removeClass("map-bus-end").addClass("map-bus-begin");
+                $("#divMapDriverEnd").removeClass("map-bus-begin").addClass("map-bus-end");
+                $("#bt_driverEndList .map-bus-arrowimg").css("display", "block");
+                $("#bt_driverStartList .map-bus-arrowimg").css("display", "none");
             }
         });
-
-        //展开终点候选栏，折叠起点候选栏
+        //展开终点候选栏，折叠起点候选栏,同时变更结果框样式
         $("#bt_driverEndList").click(function () {
-            if ($("#selectEndInputFlag2").attr("value") == "0") {
+            if ($("#bt_driverEndList").hasClass("map-bus-end-topbc")) {
                 $("#driverSC").css("display", "none");
-                $("#driverSC").addClass("map-bus-end-topbc");
+                $("#bt_driverStartList").addClass("map-bus-end-topbc");
                 $("#driverEC").css("display", "block");
-                $("#driverEC").toggleClass("map-bus-end-topbc");
-                $("#selectEndInputFlag2").attr("value", "1");
+                $("#driverEC").removeClass(["map-bus-end-topbc"]);
+                $("#divMapDriverBegin").removeClass("map-bus-begin").addClass("map-bus-end");
+                $("#divMapDriverEnd").removeClass("map-bus-end").addClass("map-bus-begin");
+                $("#bt_driverStartList .map-bus-arrowimg").css("display", "block");
+                $("#bt_driverEndList .map-bus-arrowimg").css("display", "none");
             }
         });
     })
