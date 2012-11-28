@@ -364,13 +364,6 @@ a.func_panel_resize
     width:100%;
 }
 
-.map-bus-begin
-{
-    border:1px solid #067EC0;
-    border-radius:3px 3px 3px 3px;
-    box-shadow:0 0 4px #9ED9F9 inset;
-}
-
 .map-bus-top
 {
     background:url("../images/bus/map-busbg1.gif") repeat-x;
@@ -427,6 +420,8 @@ a.func_panel_resize
     top:13px;
     width:14px;
 }
+
+
 
 .clear
 {
@@ -594,6 +589,13 @@ dl.map-result-cont dd h3
     border:1px solid #2B91C9;
     box-shadow: 0 0 3px #7FDCFD;
     color:#0980C1;
+}
+
+.map-bus-begin
+{
+    border:1px solid #067EC0;
+    border-radius:3px 3px 3px 3px;
+    box-shadow:0 0 4px #9ED9F9 inset;
 }
 
 .map-bus-end
