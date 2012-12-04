@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>自行车信息查询</title>
+    
+    <script type="text/javascript" src="js/jquery.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#queryBtn").click(function () {
+                $.post("BicycleInfoHandler.ashx", { x: $("#X").val(), y: $("#Y").val(), w: $("#W").val() }, function (result) {
+                    $("#ResultDiv").html(result.NUM);
+                });
+            });
+        });
+       
+    </script>
+</head>
+<body>
+    <div>
+        <label>X值</label>
+        <input id="X" type="text" value="" />
+        <label>Y值</label>
+        <input id="Y" type="text" value="" />
+        <label>W值</label>
+        <input id="W" type="text" value="" />                
+    </div>    
+    <div id="ResultDiv" style="background-color:Blue; height:300px; width:400px;"></div>
+    <div>
+        <input id="queryBtn" type="button" value="查询" />
+    </div>
+</body>
+</html>
