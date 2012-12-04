@@ -27,6 +27,10 @@
             this._map.addControl(new OpenLayers.Control.PanZoomBar());
         },
 
+        //添加坐标显示功能
+        AddCoordShow:function(div){
+        },
+
         //添加百度地图
         AddBaiduLayer: function () {
             var res = [];

@@ -8,29 +8,46 @@ Ext.define('KoalaGIS.Ext.View.MapView', {
     layout: 'border',
     items: [{
         region: 'north',
-        html: 'Logo and Title',
-        border: false,
-        margins: '0 0 5 0'
-    }, {
+        html: '杭州市公共自行车查询系统',
+        border: false
+    }/*, {
         region: 'west',
-        collapsible: true,
-        title: 'Navigation',
+        collapsible: false,
+        //title: 'Navigation',
         width: 150
-    }, {
+    }*/, {
         region: 'south',
-        title: 'South Panel',
-        collapsible: true,
+        //title: 'South Panel',
+        collapsible: false,
         html: 'Information goes here',
-        split: true,
-        height: 100,
-        minHeight: 100
+        split: false,
+        height: 70,
+        //minHeight: 100
     }, {
         region: 'center',
-        xtype: 'tabpanel', // TabPanel itself has no title
-        activeTab: 0,      // First tab active by default
+        //xtype: 'tabpanel', // TabPanel itself has no title
+        //activeTab: 0,      // First tab active by default
+        layout:'fit',
         items: {
-            title: 'Default Tab',
-            html: '<div id="divMap" style="width:100%;height:100%; border:solid 1px red"></div>'
+            //title: '地图控件',
+            html: '<div id="divMap" style="width:100%;height:100%; border:solid 1px red"></div>',
+            tbar:['->',{
+                xtype: 'button',
+                text: 'bike',
+                handler: function () {
+                    addBikeLayer();
+                }
+            },'-',{
+                text:'图层控制',
+                handler:function(){
+                    
+                }
+            },'-',{
+                text:'清除',
+                handler:function(){
+                    clear();
+                }
+            }]
         }
     }]
 

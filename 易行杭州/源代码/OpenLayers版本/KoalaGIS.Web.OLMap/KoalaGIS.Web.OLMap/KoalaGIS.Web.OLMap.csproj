@@ -59,7 +59,9 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Default.htm" />
+    <Content Include="js\index.js" />
     <Content Include="KoalaGIS\Ext\App\MapApp.js" />
+    <Content Include="KoalaGIS\OpenLayers\OpenLayers.Layer.ArcGISCacheEx.js" />
     <Content Include="KoalaGIS\OpenLayers\KoalaGIS.OpenLayers.js" />
     <Content Include="KoalaGIS\OpenLayers\KoalaGIS.OpenLayers.Baidu.js" />
     <Content Include="KoalaGIS\Ext\View\MapView.js" />
