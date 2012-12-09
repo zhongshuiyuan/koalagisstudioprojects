@@ -57,6 +57,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\index.css" />
     <Content Include="Default.aspx" />
     <Content Include="Default.htm" />
     <Content Include="js\index.js" />

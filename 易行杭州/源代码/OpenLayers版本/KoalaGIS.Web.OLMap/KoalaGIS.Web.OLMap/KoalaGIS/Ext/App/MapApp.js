@@ -36,7 +36,8 @@ Ext.application({
 
         KoalaGIS.OpenLayers.AddPanZoomBar();
 
-        map.addControl(new OpenLayers.Control.MousePosition());
+        var divXY = document.getElementById('divXY');
+        map.addControl(new OpenLayers.Control.MousePosition({div:divXY,prefix:'当前坐标：'}));
 
         var proj = new OpenLayers.Projection('EPSG:4326');
         var proj2 = new OpenLayers.Projection('EPSG:900913');
