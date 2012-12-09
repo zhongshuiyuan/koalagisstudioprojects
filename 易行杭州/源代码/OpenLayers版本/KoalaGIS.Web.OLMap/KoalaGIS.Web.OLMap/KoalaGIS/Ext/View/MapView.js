@@ -8,8 +8,33 @@ Ext.define('KoalaGIS.Ext.View.MapView', {
     layout: 'border',
     items: [{
         region: 'north',
-        html: '杭州市公共自行车查询系统',
-        border: false
+        //html: 'divLogo',
+        border: false,
+        bbar: [{
+            xtype: 'displayfield',
+            value: '杭州市公共自行车查询'
+        }, '->', {
+            xtype: 'button',
+            text: 'bike',
+            handler: function () {
+                addBikeLayer();
+            }
+        }, '-', {
+            text: '图层控制',
+            handler: function () {
+
+            }
+        }, '-', {
+            text: '清除',
+            handler: function () {
+                clear();
+            }
+        }, '-', {
+            text: '测试功能',
+            handler: function () {
+                testShowMarks();
+            }
+        }]
     }/*, {
         region: 'west',
         collapsible: false,
@@ -21,33 +46,18 @@ Ext.define('KoalaGIS.Ext.View.MapView', {
         collapsible: false,
         html: 'Information goes here',
         split: false,
-        height: 70,
+        height: 25,
+        html: '<div><div id="divXY"/><div style="float:right;">Copy Left By KoalaGIS Studio</div></div>'
         //minHeight: 100
     }, {
         region: 'center',
         //xtype: 'tabpanel', // TabPanel itself has no title
         //activeTab: 0,      // First tab active by default
-        layout:'fit',
+        layout: 'fit',
         items: {
             //title: '地图控件',
-            html: '<div id="divMap" style="width:100%;height:100%; border:solid 1px red"></div>',
-            tbar:['->',{
-                xtype: 'button',
-                text: 'bike',
-                handler: function () {
-                    addBikeLayer();
-                }
-            },'-',{
-                text:'图层控制',
-                handler:function(){
-                    
-                }
-            },'-',{
-                text:'清除',
-                handler:function(){
-                    clear();
-                }
-            }]
+            html: '<div id="divMap" style="width:100%;height:100%; border:solid 1px red"></div>'
+
         }
     }]
 

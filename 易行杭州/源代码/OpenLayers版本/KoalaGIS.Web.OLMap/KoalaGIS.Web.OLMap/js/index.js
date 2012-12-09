@@ -54,5 +54,73 @@ function clear() {
     if (bikelayer) {
         map.removeLayer(bikelayer);
     }
+
+}
+
+//添加自行车标注
+function addMarker(bikes) {
+    var icon = new OpenLayers.Icon('images/mark.png', new OpenLayers.Size(32, 32));
+    var markLayer = map.getLayer('BikeMarkLayer');
+    if (!markLayer) {
+        var markLayer = new OpenLayers.Layer.Markers('BikeMarkLayer');
+        map.addLayer(markLayer);
+    }
+
+    function markMouseOver(evt) {
+        var mark = evt.object;
+        mark.icon.setSize(new OpenLayers.Size(40, 40));
+    }
+
+    function markMouseOut(evt) {
+        var mark = evt.object;
+        mark.icon.setSize(new OpenLayers.Size(32, 32));
+    }
+
+    function markMouseDown(evt) {
+        debugger;
+        var mark = evt.object;
+
+        var popup = new OpenLayers.Popup("自行车信息", mark.lonlat, new OpenLayers.Size(200, 200), "Inner Html", true);
+
+        map.addPopup(popup);
+
+        OpenLayers.Event.stop(evt);
+    }
+
+    for (var i = 0; i < bikes.length; i++) {
+        var bike = bikes[i];
+        var x = bike.X;
+        var y = bike.Y;
+        var mark = new OpenLayers.Marker(new OpenLayers.LonLat(x, y), icon.clone());
+
+        mark.events.register('mousedown', mark, markMouseDown);
+        mark.events.register('mouseover', mark, markMouseOver);
+        mark.events.register('mouseout', mark, markMouseOut);
+
+        markLayer.addMarker(mark);
+    }
+}
+
+function testShowMarks(bbox) {
+    var bikes = [{ X: 13374681, Y: 3519564 }, { X: 13374881, Y: 3519836}];
+    bikes = [];
+    var cex = 13374681;
+    var cey = 3519564;
+
+    var radius = 500;
+
+    bbox = map.getExtent();
+
+    for (var i = 0; i < bikes_data.length; i++) {
+        var x = bikes_data[i][8];
+        var y = bikes_data[i][9];
+
+        if (Math.abs(x - cex) <= radius && Math.abs(y - cey) <= radius ) {
+            bikes.push({ X: x, Y: y });
+        }
+
+        
+    }
+    addMarker(bikes);
     
 }
