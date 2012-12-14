@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>新闻发布</title>
+
+    <link href="http://www.kindsoft.net/ke4/themes/default/default.css" rel="Stylesheet" />
+
+    <script type="text/javascript" src="http://www.kindsoft.net/ke4/kindeditor-all-min.js"></script>
+
+    <script type="text/javascript">
+        var editor;
+        var KE;
+        KindEditor.ready(function (K) {
+            KE = K;
+            editor = K.create('#txtEditor', {
+                allowFileManager: true,
+                fileManagerJson: '../kindeditor/php/file_manager_json.php',
+                uploadJson: '../kindeditor/php/upload_json.php',
+                height: "400px" //编辑器的高度
+            });
+
+        });
+
+
+        function postNews() {
+            debugger;
+            var html = editor.html();
+            var title = document.getElementById('txtTitle').value;
+            var author = document.getElementById('txtAuthor').value;
+
+            //alert(html);
+            var url = 'NewsHandler.ashx';
+            KE.ajax(url,
+            function (response) {
+                debugger;
+                alert(response);
+            },
+            'POST',
+            {
+                request:'insert',
+                title: title,
+                author: author,
+                html: html
+            },'text');
+        }
+    
+    </script>
+</head>
+<body>
+    <div>
+        <span>标题</span><input id="txtTitle" type="text" />
+        <span>作者</span><input id="txtAuthor" type="text" />
+    </div>
+    <div>
+        <textarea rows=2 id="txtEditor" style=" width:700px; height:300px;"></textarea>
+    </div>
+    <div>
+        <input type="button" value="提交" onclick="postNews();" />
+        <input type="reset" />
+    </div>
+    
+</body>
+</html>
