@@ -1,0 +1,16 @@
+﻿ 
+ body{line-height:1.333;font-size:12px;font-size:1.2rem;  }
+     body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,tr{margin:0;padding:0;font-size:12px;font-size:1.2rem;}
+ .connect_mode{width:960px;overflow:hidden;margin-bottom:0px;margin-top:0px}
+ 
+.connect_mode .right{float:right;font-size:14px;font-size:1.4rem}
+.connect_mode .ico_date{display:inline-block;*display:inline;zoom:1;height:14px;width:14px;overflow:hidden;background-image:url(sprite/app_connect_open_home.png?max_age=19830211&d=20120428161950);background-position:-227px -51px;margin-right:5px}
+ .connect_mode ul{width:960px; background-color:Blue;  padding:0; }
+ .connect_mode ul li{ display:block;height:245px;width:320px;margin-right:0px;float:left; cursor:pointer; text-align:center;  }
+  .connect_mode ul li img{ height:200px; width:300px; margin:3px;}
+ .connect_mode ul li h3 {font-family:\5FAE\8F6F\96C5\9ED1; font-weight:normal;  font-size:17px; color:#006499}
+ .connect_mode ul li p{font-family:\5FAE\8F6F\96C5\9ED1;font-size:13px; }
+
+ 
+
+ .connect_mode_hover{ background-color:#afd2f5; }

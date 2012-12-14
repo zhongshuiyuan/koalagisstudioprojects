@@ -1,0 +1,111 @@
+.overlaydiv
+{
+    position:absolute;
+    bottom:0;
+    left:0;
+    height:35px;
+    width:96%;
+    background:rgba(207,207,207,0.6);
+    margin:0 0 0 7px;
+}
+.title {
+    color: #333333;
+    font-size: 14px;
+    font-weight: 500;
+    font-family:Microsoft Yahei;
+    height: 18px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 9px;
+    overflow: hidden;
+    text-decoration:none; 
+}
+.testa { 
+    border-radius: 5px 5px 5px 5px;
+    float: left;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid transparent; 
+    +border: 1px solid #FFFFFF;
+}
+ .testa
+{
+ height: 240px;
+ width: 315px;
+ margin: 0 4px 15px 0px;
+ }
+
+.gui a{
+	  text-decoration:none;	 
+}
+
+.gui a:hover{
+  text-decoration:none;	
+  background-color:  #E4E9EF;
+  border: 1px solid #82C1D5;
+  box-shadow: 0px 0px 10px  #82C1D5; 
+  cursor:pointer;
+}
+
+.gui{
+   list-style: none outside none;
+   text-decoration:none;	 
+   display:inline;
+ }
+ 	
+.gui li { 
+  display:inline;
+}
+
+.gimg{ 	
+ 	background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 5px 5px 5px 5px;
+    border: 2px solid #DCDCDC;
+    box-shadow: 0 0 15px #DCDCDC;
+    clear: right;
+    float: left;
+  }
+ 
+
+.gimg
+ {
+   height: 230px;
+   width: 300px;
+   margin: 5px 5px 0 5px;
+  }
+        
+.gallarystyle{
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+	width: 100%;
+} 
+.dtop {          
+  overflow:hidden;       
+  text-align:center;   
+  vertical-align:middle; 
+  display:block; 
+  height:100%;
+}   
+div p {   
+  position:static;   
+ }   
+img {   
+  margin: 0;
+	padding: 0;
+  position:static;   
+  +position:relative;   
+  top:-50%;
+  +top:0px;
+  _top:0px;
+  left:0px; 
+  display:inline;  
+  }   
+  
+.dbuttom{
+	position:relative;
+	overflow:hidden;
+	+top:40px;
+  _top:40px;
+}

@@ -1,0 +1,141 @@
+.board-read
+{
+    width:928px;
+    margin:0 5px 0 5px;
+ }
+ .board-render{position:relative;width:927px;border:1px solid #C8C8C8;border-width:0 1px 1px 0;background-color:#F3F3F3;}
+ .board-render .item-wrap{position:absolute;cursor:pointer;border:1px solid #C8C8C8;background:#FFF;}
+ .board-render .item-empty{position:absolute;border:1px solid #C8C8C8;background:#F3F3F3;}
+ .board-render .item{position:relative;margin:4px;line-height:21px;overflow:hidden;}
+
+ .testa { 
+    border-radius: 5px 5px 5px 5px;
+    float: left;
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    width: 300px;
+    border: 1px solid transparent; 
+    +border: 1px solid #FFFFFF;
+}
+
+ .testa1 { 
+    border-radius: 5px 5px 5px 5px;
+    float: left;
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    width: 609px;
+    border: 1px solid transparent; 
+}
+
+ .testa2 { 
+    border-radius: 5px 5px 5px 5px;
+    float: left;
+    height: 529px;
+    overflow: hidden;
+    position: relative;
+    width: 300px;
+    border: 1px solid transparent; 
+}
+
+.gui{
+   list-style: none outside none;
+   text-decoration:none;	 
+   display:inline;
+ }
+ 
+.gui a{
+	  text-decoration:none;	 
+}
+
+.gui a:hover{
+  text-decoration:none;	
+  background-color:  #E4E9EF;
+  box-shadow: 0px 0px 10px  #82C1D5; 
+  cursor:pointer;
+}
+ /*
+ .item-a1,.item-a2{width:250px;height:260px;}
+ .item-a1 .item-cont{height:165px;}
+ .item-a2 img{width:250px;height:260px;}
+ .item-a2 .item-hd{position:absolute;bottom:0;left:0;padding:5px 10px;width:230px;color:#FFF;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#99000000',endColorstr='#99000000');background:rgba(0,0,0,0.6);}
+ .item-a2 .item-hd h3{font:14px/20px "Microsoft YaHei",SimHei;}
+ .item-a2 .item-hd h3 a,.item-a2 .item-hd h3 a:visited,.item-a2 .item-hd h3 a:hover{color:#fff;}
+ .item-a2 .item-hd p{height:18px;line-height:18px;}
+ .item-a2 .item-hd a,.item-a2 .item-hd a:visited{color:#999;}
+ .item-a2 .item-hd a:hover{color:#999;}
+
+ .item-b1,.item-b2,.item-b3,.item-b4{width:519px;height:260px;}
+ .item-b1 .item-cont,.item-b2 .item-cont,.item-b3 .item-cont{height:165px;}
+ .item-b2 .item-pic{float:right;}
+ .item-b3 .item-pic{float:left;}
+ .item-b2 img,.item-b3 img{width:250px;height:260px;}
+ .item-b2 img{margin-left:10px;}
+ .item-b3 img{margin-right:10px;}
+
+ .item-c1,.item-c2,.item-c3,.item-c4,.item-c5{width:788px;height:260px;}
+ .item-c1 h3,.item-c2 h3,.item-c3 h3,.item-c4 h3,.item-c5 h3{font:26px/33px "Microsoft YaHei" SimHei;}
+ .item-c1 .item-cont,.item-c2 .item-cont,.item-c3 .item-cont,.item-c4 .item-cont,.item-c5 .item-cont{height:190px;}
+ .item-c2 .item-pic,.item-c5 .item-pic{float:left;}
+ .item-c3 .item-pic,.item-c4 .item-pic{float:right;}
+ .item-c2 img,.item-c3 img{width:250px;height:260px;}
+ .item-c4 img{width:210px;height:200px;}
+ .item-c5 img{width:170px;height:200px;}
+ .item-c2 img,.item-c5 img{margin-right:10px;}
+ .item-c3 img,.item-c4 img{margin-left:10px;}
+ .item-d1,.item-d2,.item-d3,.item-d4{width:519px;height:539px;}
+ .item-d1 h3,.item-d2 h3,.item-d3 h3,.item-d4 h3{font:26px/33px "Microsoft YaHei" SimHei;}
+ .item-d1 .item-cont,.item-d2 .item-cont{height:170px;}
+ .item-d3 .item-cont{height:149px;}
+ .item-d4 .item-cont{height:49px;}
+ .item-d1 img{margin-top:5px;width:520px;height:270px;}
+ .item-d2 img{margin-bottom:5px;width:520px;height:270px;}
+ .item-d3 img{width:250px;height:140px;}
+ .item-d4 img{width:160px;height:190px;}
+ .item-d3 img{float:left;margin:10px 15px 0 0;}
+ .item-d4 img{float:left;margin:10px 6px 0;}
+ .item-d2 .item-pic,.item-d3 .item-pic{width:530px;}
+ .item-e1,.item-e2,.item-e3,.item-e4{width:250px;height:539px;}
+ .item-e1 .item-cont{height:460px;}
+ .item-e2 .item-cont{height:169px;}
+ .item-e3 .item-cont,.item-e4 .item-cont{height:190px;}
+ .item-e2 img{margin-top:5px;width:250px;height:140px;}
+ .item-e3 img,.item-e4 img{width:250px;height:260px;}
+ .item-e3 img{margin-top:10px;}
+ .item-e4 img{margin-bottom:10px;}
+ .item-d1 .item-pic,.item-d3 .item-pic,.item-d4 .item-pic,.item-e2 .item-pic,.item-e3 .item-pic{position:absolute;bottom:0;}
+*/
+ 
+ /* item-a1=>占据一个格子，放置文字；
+    item-a2=>占据一个格子，放置图片；
+    item-b1=>横向占用两个格子，图片在左，文字在右；
+    item-b2=>横向占用两个格子，图片在右，文字在左；
+    item-c1=>纵向占用两个格子，图片在上，文字在下；
+    item-c2=>纵向占用两个格子，图片在下，文字在上；*/
+    
+ .item-a1,.item-a2{width:300px;height:260px;}
+ .item-a1 .item-cont{height:215px;}
+ .item-a2 img{width:300px;height:260px;}
+ .item-a2 .item-hd{position:absolute;bottom:0;left:0;padding:5px 10px;width:278px;color:#FFF;background:rgba(0,0,0,0.6);}
+ .item-a2 .item-hd h3{font:14px/20px "Microsoft YaHei",SimHei;}
+ .item-a2 .item-hd h3 a,.item-a2 .item-hd h3 a:visited,.item-a2 .item-hd h3 a:hover{color:#fff;}
+ .item-a2 .item-hd p{height:18px;line-height:18px;}
+ .item-a2 .item-hd a,.item-a2 .item-hd a:visited{color:#999;}
+ .item-a2 .item-hd a:hover{color:#999;}
+ .item-b1,.item-b2{width:609px;height:260px;}
+ .item-b1 .item-cont,.item-b2 .item-cont{height:215px;}
+ .item-b1 .item-pic{float:left;}
+ .item-b2 .item-pic{float:right;}
+ .item-b1 img,.item-b2 img{width:300px;height:260px;}
+ .item-b1 img{margin-right:10px;}
+ .item-b2 img{margin-left:10px;}
+ .item-c1,.item-c2{width:300px;height:529px;}
+ .item-c1 .item-cont{height:215px;}
+ .item-c2 .item-cont{height:215px;}
+ .item-c1 img,.item-c2 img{width:300px;height:260px;}
+ .item-c1 img{margin-bottom:10px;}
+ .item-c2 img{margin-top:10px;}
+ .item-c2 .item-pic{position:absolute;bottom:0;}
+ 
+ .item-bd .item-cont{font:14px/24px Simsun;overflow:hidden;}
