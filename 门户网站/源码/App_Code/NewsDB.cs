@@ -6,6 +6,8 @@ using System.Web;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 
+using ZJGIS.Model.Common;
+
 namespace ZJGIS.Model.News
 {
 
@@ -42,14 +44,7 @@ namespace ZJGIS.Model.News
     }
 
 
-    public class QueryResultSet<T>
-    {
-        private int _totalcount;
-        public int TotalCount { get { return _totalcount; } set { _totalcount = value; } }
-
-        private List<T> _resultset;
-        public List<T> ResultSet { get { return _resultset; } set { _resultset = value; } }
-    }
+    
 
 
     /// <summary>
