@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>案例修改</title>
+
+    <link href="http://www.kindsoft.net/ke4/themes/default/default.css" rel="Stylesheet" />
+
+    <!--<script type="text/javascript" src="http://www.kindsoft.net/ke4/kindeditor-all-min.js"></script>-->
+
+    <script type="text/javascript" src="../kindeditor/kindeditor.js"></script>
+
+    <script type="text/javascript">
+
+        //获取地址栏信息
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        } 
+        
+        var editor;
+        var KE;
+        var id;
+        KindEditor.ready(function (K) {
+            KE = K;
+            editor = K.create('#txtEditor', {
+                allowFileManager: true,
+                fileManagerJson: '../kindeditor/asp.net/file_manager_json.ashx',
+                uploadJson: '../kindeditor/asp.net/upload_json.ashx',
+                height: "400px" //编辑器的高度
+            });
+
+            K('#thumbnailimage').click(function () {
+                editor.loadPlugin('image', function () {
+                    editor.plugin.imageDialog({
+                        //showRemote:false,
+                        imageUrl: K('#thumbnail').val(),
+                        clickFn: function (url, title, width, height, border, align) {
+                            K('#thumbnail').val(url);
+                            editor.hideDialog();
+                        }
+                    });
+                });
+
+            });
+
+
+            //加载信息
+            id = GetQueryString("id");
+            var url = 'DemoHandler.ashx?request=querybyid&id=' + id;
+            KE.ajax(url,
+                function (response) {
+                    var json = K.json(response);
+                    var html = editor.html(json.CONTENT);
+                    K('#txtTitle').val(json.TITLE);
+                    K('#txtAuthor').val(json.AUTHOR);
+                    K('#txtUrl').val(json.APPURL);
+                    K('#thumbnail').val(json.THUMBNAIL);
+                   
+                },'GET',null,'html');
+
+        });
+
+
+        function postNews() {
+
+            var html = editor.html();
+            var title = document.getElementById('txtTitle').value;
+            var author = document.getElementById('txtAuthor').value;
+            var appurl = document.getElementById('txtUrl').value;
+            var thumbnail = document.getElementById('thumbnail').value;
+
+            //alert(html);
+            var url = 'DemoHandler.ashx';
+            KE.ajax(url,
+            function (response) {
+                debugger;
+                alert(response);
+            },
+            'POST',
+            {
+                request: 'update',
+                title: title,
+                author: author,
+                url: appurl,
+                thumbnail: thumbnail,
+                html: html,
+                id:id
+            },'text');
+        }
+    
+    </script>
+</head>
+<body>
+    <div>
+        <span>标题</span><input id="txtTitle" type="text" />
+        <span>作者</span><input id="txtAuthor" type="text" />
+        <span>案例地址</span><input id="txtUrl" type="text" />
+    </div>
+    <div>
+        <input type="text" id="thumbnail" value="" /> <input type="button" id="thumbnailimage" value="选择图片" />（网络图片 + 本地上传）
+    </div>
+    <div>
+        <textarea rows="2" cols="2" id="txtEditor" style=" width:700px; height:300px;"></textarea>
+    </div>
+    <div>
+        <input type="button" value="提交" onclick="postNews();" />
+        <input type="reset" />
+    </div>
+    
+</body>
+</html>

@@ -5,6 +5,7 @@ using System.Web;
 
 
 using ZJGIS.Model.News;
+using ZJGIS.Model.Common;
 
 public class NewsHandler : IHttpHandler {
 
