@@ -3,9 +3,9 @@
 //date:2012-05-29 12:30
 //在线地图app
 
-Ext.Loader.setConfig({
-    enabled: true
-});
+//Ext.Loader.setConfig({
+//    enabled: true
+//});
 
 
 Ext.application({
