@@ -3,6 +3,10 @@
 //date:2012-05-29 12:30
 //在线地图app
 
+
+//Ext.Loader.setPath('Ext.ux', 'http://cdn.sencha.io/ext-4.1.1a-gpl/examples/ux/');
+//Ext.require(['Ext.grid.*', 'Ext.data.*', 'Ext.util.*', 'Ext.tip.QuickTipManager']);
+
 Ext.define('KoalaGIS.Ext.View.MapView', {
     extend: 'Ext.container.Viewport',
     layout: 'border',
@@ -15,14 +19,16 @@ Ext.define('KoalaGIS.Ext.View.MapView', {
             value: '杭州市公共自行车查询'
         }, '->', {
             xtype: 'button',
-            text: 'bike',
+            text: '显示自行车分布图',
+            id: 'BTN_BIKE',
             handler: function () {
-                addBikeLayer();
-            }
-        }, '-', {
-            text: '图层控制',
-            handler: function () {
-
+                if (this.text == '显示自行车分布图') {
+                    addBikeLayer();
+                    this.setText('隐藏自行车分布图');
+                } else {
+                    hideBikeLayer();
+                    this.setText('显示自行车分布图');
+                }
             }
         }, '-', {
             text: '清除',
@@ -32,7 +38,17 @@ Ext.define('KoalaGIS.Ext.View.MapView', {
         }, '-', {
             text: '测试功能',
             handler: function () {
-                testShowMarks();
+                //testShowMarks();
+                showSearchGrid();
+            }
+        }, '-', {
+            xtype: 'textfield',
+            fieldLabel: '名称',
+            labelWidth: 30
+        }, {
+            text: '搜索',
+            handler: function () {
+
             }
         }]
     }/*, {
