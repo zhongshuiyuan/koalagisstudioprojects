@@ -63,7 +63,7 @@ namespace ZJGIS.Model.News
 
         public News ReadNewsByID(int id)
         {
-            string sql = string.Format( "SELECT * FROM NEWS WHERE ID='{}'", id );
+            string sql = string.Format( "SELECT * FROM NEWS WHERE ID={0}", id );
 
             if (this._conn.State != System.Data.ConnectionState.Open)
             {
@@ -78,11 +78,29 @@ namespace ZJGIS.Model.News
             
             mydr.Read();
 
-            this._conn.Close();
-
             News news = this.CreateNewsByRecord(mydr);
 
+            this._conn.Close();
+
+            
+
             return news;
+        }
+
+        public void UpdateNews(int id, News news)
+        {
+            string sql = string.Format("UPDATE NEWS SET TITLE='{0}',CONTENT='{1}',PEOPLE='{2}' WHERE ID={3}", news.TITLE, news.CONTENT, news.PEOPLE, id);
+
+            if (this._conn.State != System.Data.ConnectionState.Open)
+            {
+                this._conn.Open();
+            }
+
+            OleDbCommand mycmd = new OleDbCommand(sql, this._conn);
+
+            int n = mycmd.ExecuteNonQuery();
+
+            this._conn.Close();
         }
 
         public void InsertNews(News news)
@@ -144,11 +162,11 @@ namespace ZJGIS.Model.News
         {
             News news = new News();
             news.ID = (int)rd["ID"];
-            news.TITLE = (string)rd["ID"];
-            news.CONTENT = (string)rd["ID"];
-            news.PEOPLE = (string)rd["ID"];
-            news.POSTTIME = (DateTime)rd["ID"];
-            news.READTIMES = (int)rd["ID"];
+            news.TITLE = (string)rd["TITLE"];
+            news.CONTENT = (string)rd["CONTENT"];
+            news.PEOPLE = (string)rd["PEOPLE"];
+            news.POSTTIME = (DateTime)rd["POSTTIME"];
+            news.READTIMES = (int)rd["READTIMES"];
 
             return news;
             

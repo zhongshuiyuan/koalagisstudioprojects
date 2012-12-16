@@ -13,6 +13,10 @@
     <link href="css/qzfl.css" rel="stylesheet" type="text/css" media="screen">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="icon" href="png_favicon.png" type=" image/png">
+    <link rel="stylesheet" href="js/nivo-slider/themes/default/default.css" type="text/css"
+        media="screen" />
+
+    <link rel="stylesheet" href="js/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
     <!--[if lt IE 9]>
 <script type="text/javascript">
 	document.createElement('header');
@@ -27,8 +31,8 @@
 </script>
 <![endif]-->
     <!--<meta property="qc:admins" content="264221531065346116375" />-->
-
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/nivo-slider/jquery.nivo.slider.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 </head>
 <body>
@@ -41,7 +45,7 @@
 				<li id="nav_intro"><a href="#" title="产品介绍">产品介绍<b></b></a></li>
 				<li id="nav_wiki"><a href="#" target="_blank" title="文档资源">文档资源<b></b></a></li>
 				<li id="nav_manage"><a href="#" title="下载中心">管理中心<b></b></a></li>
-				<li id="nav_about"><a href="#" title="开发案例">开发案例<b></b></a></li>
+				<li id="nav_about"><a href="demos/index.htm" title="开发案例" target="_blank">开发案例<b></b></a></li>
 				<!--<li id="nav_rank"><a href="http://page.opensns.qq.com/ranking/" target="_blank" title="排行榜">排行榜<b></b></a></li>-->
 				<li id="nav_bbs"><a href="#" target="_blank" title="技术论坛">意见反馈<b></b></a></li>
 				<li id="nav_data"><a href="#" target="_blank" title="空间热度">空间热度<b></b></a></li>
@@ -61,34 +65,12 @@
 	</header>
         <div class="page_main">
             <div class="home_img_slides">
-                <div id="slides" class="slide_window">
-                    <div class="slides_container" id="ca_container" style="overflow-x: hidden; overflow-y: hidden;
-                        position: relative; display: block;">
-                        <div class="slides_control" style="position: relative; width: 2880px; height: 327px;
-                            left: -960px;">
-                            <div id="img0" class="slide" style="position: absolute; top: 0px; left: 960px; z-index: 0;
-                                display: none;">
-                                <img alt="" src="images/Banner1.png">
-                                <!-- <a title="网站接入" href="http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E7%BD%91%E7%AB%99%E6%8E%A5%E5%85%A5"
-                                    class="btn_join_p" target="_blank">网站接入</a> <a title="手机接入" href="http://wiki.opensns.qq.com/wiki/%E3%80%90QQ%E7%99%BB%E5%BD%95%E3%80%91%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8%E6%8E%A5%E5%85%A5"
-                                        class="btn_join_m" target="_blank">手机接入</a> <a class="btn_join_apply" href="javascript:$QC.Common.takePartIn();"
-                                            title="申请加入">申请加入</a>-->
-                            </div>
-                            <div id="img1" class="slide" style="position: absolute; top: 0px; left: 960px; z-index: 0;
-                                display: none;">
-                                <img src="images/Banner2.png" alt="" />
-                            </div>
-                            <div id="img2" class="slide" style="position: absolute; top: 0px; left: 960px; z-index: 0;
-                                display: none;">
-                                <img src="images/Banner3.png" alt="" />
-                            </div>
-                        </div>
+                <div id="slides" class="slider-wrapper theme-default">
+                    <div id="slider" class="nivoSlider">
+                        <img src="images/Banner1.png" data-thumb="images/Banner1.png" alt="" />
+                        <img src="images/Banner2.png" data-thumb="images/Banner2.png" alt="" data-transition="slideInLeft" />
+                        <img src="images/Banner3.png" data-thumb="Banner3.png" alt="" />
                     </div>
-                    <ul class="pagination">
-                        <li class="current" id="btn0"><a href="javascript:;">1</a></li>
-                        <li class="" id="btn1"><a href="javascript:;">2</a></li>
-                        <li class="" id="btn2"><a href="javascript:;">3</a></li>
-                    </ul>
                 </div>
             </div>
             <section class="connect_mode">
@@ -192,7 +174,7 @@
 
 		<p class="copyright_cn">KoalaGIS Studio <a href="#" target="_blank">版权所有</a>
 			<a href="http://cnblogs.com/laoyu" title="联系我们">联系我们</a>
-            <a href="News/NewsPost.htm" target="_blank" title="后台管理">后台管理</a>
+            <a href="Admin/Default.aspx" target="_blank" title="后台管理">后台管理</a>
 			</p>
 	<div class="page_standard_logos" style="text-align: center; padding: 5px 0px; width: 98px; position: relative; margin: 0px auto; "><a href="http://validator.w3.org/check?uri=http%3A%2F%2Fconnect.qq.com%2F" target="_blank" title="本页面采用HTML5技术 
 HTML5 Powered 
@@ -204,31 +186,9 @@ World Wide Web Consortium (W3C) member
 World Wide Web Consortium (W3C) member 
 (点击这里跳转到万维网联盟英文官方网站)" style="vertical-align:middle;border:solid 1px #AAA;border-radius:4px;"></a></div></footer>
         <script type="text/javascript">
-            /**
-            * 同时输出脚本
-            * @param flag 是否进行concat输出
-            */
-            //            (function threadOutPut(flag) {
-            //                var _jsBegin = '<script type="text/javascript" src="', _jsEnd = '"></' + 'script>', _domain = 'http://qzonestyle.gtimg.cn', _concatDomain = 'http://qzonestyle.gtimg.cn/c/=',
-            //				_concatArr = [];
-
-            //                /*flag&&*/document.write([_jsBegin, _domain, '/ac/qzfl/release/qzfl_for_qzone.js', _jsEnd].join(""));
-
-            //                if (window.g_jsLib) {
-            //                    for (var i = 0, _lib, l = g_jsLib.length; i < l; i++) {
-            //                        _lib = g_jsLib[i];
-            //                        if (flag) {
-            //                            _concatArr.push(_lib);
-            //                        } else {
-            //                            document.write([_jsBegin, _domain, _lib, _jsEnd].join(""));
-            //                        }
-            //                    }
-
-            //                    if (flag && _concatArr.length) {
-            //                        document.write([_jsBegin, _concatDomain, _concatArr.join(",") + "?max_age=3600", _jsEnd].join(""));
-            //                    }
-            //                }
-            //            })(true);
+            $(window).load(function () {
+                $('#slider').nivoSlider();
+            });
         </script>
         <!--<script type="text/javascript" src="js/qzfl_for_qzone.js"></script>-->
         <!--<script type="text/javascript" src="js/page_logo.js"></script>-->
