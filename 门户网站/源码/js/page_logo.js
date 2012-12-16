@@ -28,7 +28,6 @@ iiDomain='i.gtimg.cn';
 
 //*************************越狱..********************************//
 (function(){
-	debugger;
 	QZFL.JSONGetter.prototype.checkResponse = QZFL.FormSender.prototype.checkResponse = function(resp) {//debugger
 		var ret, retCode = resp.ret, fun;
 		if(fun = this[retCode] || arguments.callee[retCode]) {

@@ -144,7 +144,7 @@ namespace ZJGIS.Model.Demos
 
         public QueryResultSet<Demo> QueryTopDemos(int top)
         {
-            string sql = string.Format("SELECT TOP * FROM NEWS ORDER BY ID DESC ", top);
+            string sql = string.Format("SELECT TOP {0} * FROM APPS ORDER BY ID DESC ", top);
 
             if (this._conn.State != System.Data.ConnectionState.Open)
             {

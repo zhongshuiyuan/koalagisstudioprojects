@@ -30,7 +30,7 @@ function loadNews() {
                 var DATE = news[i].POSTTIME;
                 DATE = MSTimeFormat(DATE);
                 DATE = DATE.getFullYear() + '-' + DATE.getMonth() + '-' + DATE.getDay();
-                html.push("<li><a href='' title='" + TITLE + "' target='_blank'>" + TITLE + "</a><span class='data'>" + DATE + "</span></li> ");
+                html.push("<li><a href='news/details.htm?id="+ ID +"' title='" + TITLE + "' target='_blank'>" + TITLE + "</a><span class='data'>" + DATE + "</span></li> ");
             }
 
             html = html.join('');

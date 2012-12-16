@@ -32,6 +32,14 @@ public class NewsHandler : IHttpHandler {
         {
             this.QueryTopNews(context);
         }
+        else if (type == "querybyid")
+        {
+            this.QueryNewsByID(context);
+        }
+        else if (type == "update")
+        {
+            this.UpdateNews(context);
+        }
     }
 
 
@@ -52,6 +60,49 @@ public class NewsHandler : IHttpHandler {
         context.Response.Write(result);
         
         
+    }
+
+    public void UpdateNews(HttpContext context)
+    {
+        string title = context.Request["title"];
+        string author = context.Request["author"];
+        string html = context.Request["html"];
+
+        string id = context.Request["id"];
+        int nID = int.Parse(id); 
+
+        News news = new News();
+        news.TITLE = title;
+        news.CONTENT = html;
+        news.PEOPLE = author;
+
+        db.UpdateNews(nID,news);
+
+        string result = "{success:true}";
+        context.Response.Write(result);
+
+
+    }
+
+    public void QueryNewsByID(HttpContext context)
+    {
+        string idStr = context.Request["ID"];
+        int id = int.Parse(idStr);
+
+        News news = this.db.ReadNewsByID(id);
+
+        Newtonsoft.Json.JsonSerializer serializer = new Newtonsoft.Json.JsonSerializer();
+
+
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        System.IO.StringWriter sw = new System.IO.StringWriter(sb);
+
+        using (Newtonsoft.Json.JsonWriter jsonWriter = new Newtonsoft.Json.JsonTextWriter(sw))
+        {
+            serializer.Serialize(jsonWriter, news);
+            string strResult = sb.ToString();
+            context.Response.Write(strResult);
+        }
     }
 
     public void QueryTopNews(HttpContext context )

@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <title>开发案例作品</title>
 
     <link media="screen" type="text/css" href="../css/app_connect_open_home.css" rel="stylesheet">
     <link href="../css/qzfl.css" rel="stylesheet" type="text/css" media="screen">
@@ -12,6 +12,66 @@
     <script type="text/javascript" src="fancybox/jquery.fancybox-1.3.4.pack.js"></script>
     <link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox-1.3.4.css"
         media="screen" />
+
+    <script type="text/javascript">
+        String.prototype.format = function(args) {
+            var result = this;
+            if (arguments.length > 0) {    
+                if (arguments.length == 1 && typeof (args) == "object") {
+                    for (var key in args) {
+                        if(args[key]!=undefined){
+                            var reg = new RegExp("({" + key + "})", "g");
+                            result = result.replace(reg, args[key]);
+                        }
+                    }
+                }
+                else {
+                    for (var i = 0; i < arguments.length; i++) {
+                        if (arguments[i] != undefined) {
+                            var reg = new RegExp("({[" + i + "]})", "g");
+                            result = result.replace(reg, arguments[i]);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+        
+        function loadDemos() {
+            var url = 'DemoHandler.ashx';
+            jQuery.ajax(url, {
+                dataType: 'json',
+                data: {
+                    request: 'querytopdemos',
+                    top: 9
+                },
+                error: function () {
+                },
+                success: function (data, textStatus, jqXHR) {
+                    var news = data.ResultSet;
+                    var html = [];
+                    for (var i = 0; i < news.length; i++) {
+                        var ID = news[i].ID;
+                        var TITLE = news[i].TITLE;
+                        var thumbnail = news[i].THUMBNAIL;
+                        var appurl = news[i].APPURL;
+
+                        var fmstr = "<li id='{0}'><a href='{1}' class='testa'><img class='gimg' src='{2}'/><div class='overlaydiv'><span class='title'>{3}</span></div></a></li>";
+                        fmstr = fmstr.format( ID, appurl, thumbnail, TITLE);
+                        html.push( fmstr);
+                    }
+
+                    html = html.join('');
+
+                    $('#ulApps').html(html);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            loadDemos();
+        });
+    </script>
 
 </head>
 <body>
@@ -23,36 +83,7 @@
         <div class="page_main" >
              <div id="gallary" class="gallarystyle" style=" width:965px;">
                 <ul id="ulApps" class="gui">
-                    <li id="20120920140057"><a href="appcontentsimple.htm?id=20120920140057" class="testa">
-                        <img class="gimg" src="http://126.33.9.151/geosoc/resources//UploadFiles/Apps/20120920/20120920152611_4415.png"
-                            onerror="defaultImgApp(this);"><div class="overlaydiv">
-                                <span class="title">遥感数据处理</span></div>
-                    </a></li>
-                    <li id="20120920140833"><a href="appcontentsimple.htm?id=20120920140833" class="testa">
-                        <img class="gimg" src="http://126.33.9.151/geosoc/resources//UploadFiles/Apps/20120920/20120920152439_8432.png"
-                            onerror="defaultImgApp(this);"><div class="overlaydiv">
-                                <span class="title">土地执法遥感动态监测</span></div>
-                    </a></li>
-                    <li id="20120920144709"><a href="appcontentsimple.htm?id=20120920144709" class="testa">
-                        <img class="gimg" src="http://126.33.9.151/geosoc/resources//UploadFiles/Apps/20120920/20120920152503_3866.png"
-                            onerror="defaultImgApp(this);"><div class="overlaydiv">
-                                <span class="title">水库流域土地利用分类</span></div>
-                    </a></li>
-                    <li id="20120920144919"><a href="appcontentsimple.htm?id=20120920144919" class="testa">
-                        <img class="gimg" src="http://126.33.9.151/geosoc/resources//UploadFiles/Apps/20120920/20120920152052_4402.jpg"
-                            onerror="defaultImgApp(this);"><div class="overlaydiv">
-                                <span class="title">浙江省地理国情监测与统计分析</span></div>
-                    </a></li>
-                    <li id="20120920145307"><a href="appcontentsimple.htm?id=20120920145307" class="testa">
-                        <img class="gimg" src="http://126.33.9.151/geosoc/resources//UploadFiles/Apps/20120920/20120920152024_5726.jpg"
-                            onerror="defaultImgApp(this);"><div class="overlaydiv">
-                                <span class="title">浙江省国土面积量算</span></div>
-                    </a></li>
-                    <li id="20120920145423"><a href="appcontentsimple.htm?id=20120920145423" class="testa">
-                        <img class="gimg" src="http://126.33.9.151/geosoc/resources//UploadFiles/Apps/20120920/20120920151958_8262.jpg"
-                            onerror="defaultImgApp(this);"><div class="overlaydiv">
-                                <span class="title">浙江省空间规划与重大项目选址三维仿真系统</span></div>
-                    </a></li>
+                   
                 </ul>
             </div>
         </div>
@@ -60,7 +91,5 @@
     <div>
         <iframe src="../footer.htm" scrolling="no" style=" width:100%; height:120px; overflow:hidden; border:0px; margin-bottom:0px;"></iframe>
     </div>
-    
-    
 </body>
 </html>

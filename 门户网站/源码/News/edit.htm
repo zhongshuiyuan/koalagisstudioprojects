@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>新闻编辑</title>
+
+    <link href="http://www.kindsoft.net/ke4/themes/default/default.css" rel="Stylesheet" />
+
+    <script type="text/javascript" src="http://www.kindsoft.net/ke4/kindeditor-all-min.js"></script>
+
+    <script type="text/javascript">
+
+        //获取地址栏信息
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+
+        //加载信息
+        var id = GetQueryString("id");
+
+        if (!id) {
+            alert('没有指定新闻的id');
+            return;
+        }
+        
+        var editor;
+        var KE;
+        KindEditor.ready(function (K) {
+            KE = K;
+            editor = K.create('#txtEditor', {
+                allowFileManager: true,
+                fileManagerJson: '../kindeditor/asp.net/file_manager_json.ashx',
+                uploadJson: '../kindeditor/asp.net/upload_json.ashx',
+                height: "400px" //编辑器的高度
+            });
+
+
+            var url = 'NewsHandler.ashx?request=querybyid&id=' + id;
+            KE.ajax(url,
+                function (response) {
+                    var json = K.json(response);
+                    var html = editor.html(json.CONTENT);
+                    K('#txtTitle').val(json.TITLE);
+                    K('#txtAuthor').val(json.AUTHOR);
+                   
+                },'GET',null,'html');
+
+        });
+
+
+        function postNews() {
+            //debugger;
+            var html = editor.html();
+            var title = document.getElementById('txtTitle').value;
+            var author = document.getElementById('txtAuthor').value;
+
+            //alert(html);
+            var url = 'NewsHandler.ashx';
+            KE.ajax(url,
+            function (response) {
+                debugger;
+                alert(response);
+            },
+            'POST',
+            {
+                request:'update',
+                title: title,
+                author: author,
+                html: html,
+                id:id
+            },'text');
+        }
+    
+    </script>
+</head>
+<body>
+    <div>
+        <span>标题</span><input id="txtTitle" type="text" />
+        <span>作者</span><input id="txtAuthor" type="text" />
+    </div>
+    <div>
+        <textarea rows=2 id="txtEditor" style=" width:700px; height:300px;"></textarea>
+    </div>
+    <div>
+        <input type="button" value="提交" onclick="postNews();" />
+        <input type="reset" />
+    </div>
+    
+</body>
+</html>
