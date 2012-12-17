@@ -4,6 +4,11 @@
 
 var isBikeShow = false;
 var bikeLayer;
+
+//自行车标注图层
+var bikeMarksLayer;
+
+
 //添加自行车图层
 function addBikeLayer() {
 
@@ -73,12 +78,11 @@ function clear() {
 }
 
 //添加自行车标注
-function addMarker(bikes) {
+function showBikeMarkers(bikes) {
     var icon = new OpenLayers.Icon('images/mark.png', new OpenLayers.Size(32, 32));
-    var markLayer = map.getLayer('BikeMarkLayer');
-    if (!markLayer) {
-        var markLayer = new OpenLayers.Layer.Markers('BikeMarkLayer');
-        map.addLayer(markLayer);
+    if (!bikeMarksLayer) {
+        bikeMarksLayer = new OpenLayers.Layer.Markers('BikeMarkLayerName');
+        map.addLayer(bikeMarksLayer);
     }
 
     function markMouseOver(evt) {
@@ -91,16 +95,9 @@ function addMarker(bikes) {
         mark.icon.setSize(new OpenLayers.Size(32, 32));
     }
 
-    function markMouseDown(evt) {
-        debugger;
-        var mark = evt.object;
-
-        var popup = new OpenLayers.Popup("自行车信息", mark.lonlat, new OpenLayers.Size(200, 200), "Inner Html", true);
-
-        map.addPopup(popup);
-
-        OpenLayers.Event.stop(evt);
-    }
+    var popupClass = OpenLayers.Class(OpenLayers.Popup.FramedCloud, {
+            'autoSize': true
+        });
 
     for (var i = 0; i < bikes.length; i++) {
         var bike = bikes[i];
@@ -108,11 +105,60 @@ function addMarker(bikes) {
         var y = bike.Y;
         var mark = new OpenLayers.Marker(new OpenLayers.LonLat(x, y), icon.clone());
 
-        mark.events.register('mousedown', mark, markMouseDown);
-        mark.events.register('mouseover', mark, markMouseOver);
-        mark.events.register('mouseout', mark, markMouseOut);
+//        mark.events.register('mousedown', mark, markMouseDown);
+//        mark.events.register('mouseover', mark, markMouseOver);
+//        mark.events.register('mouseout', mark, markMouseOut);
 
-        markLayer.addMarker(mark);
+        //        bikeMarksLayer.addMarker(mark);
+
+        addMarker(bikeMarksLayer, mark, popupClass, 'testdsfsdfdfdsfdf<br>dfsdfsdfsdfsdf<br>dfsdfsdfsdfsdf<br>', true, true);
+    }
+}
+
+
+var g_popup = null;
+
+//添加标会 markers Markers图层, xy坐标点,popupClass, closeBox,overflow：true:false
+function addMarker(markers, marker, popupClass, popupContentHTML, closeBox, overflow) {
+
+    overflow = (overflow) ? "auto" : "hidden";
+
+
+    var markerClick = function (evt) {
+        var marker = evt.object;
+        if (g_popup) {
+            map.removePopup(g_popup);
+            //g_popup.destroy();
+            g_popup = null;
+        }
+
+        var lonlat = marker.lonlat;
+        g_popup = new popupClass("popup",
+            lonlat,
+            new OpenLayers.Size(200, 200),
+            popupContentHTML,
+           marker.icon,
+            true);
+
+        map.addPopup(g_popup);
+        g_popup.show();
+
+        OpenLayers.Event.stop(evt);
+    };
+
+    marker.events.register("mousedown", marker, markerClick);
+
+    markers.addMarker(marker);
+}
+
+//清除所有的自行车标注
+function clearBikeMarkers() {
+
+    if (bikeMarksLayer) {
+        var mks = bikeMarksLayer.markers;
+        do {
+            bikeMarksLayer.removeMarker(mks[0]);
+        } while (bikeMarksLayer.markers.length > 0);
     }
 }
 
@@ -167,6 +213,42 @@ function showSearchGrid() {
         fields: [{ name: 'StationName' }, { name: 'StationID' }, { name: 'X' }, { name: 'Y'}]
     });
 
+    //绑定load数据的事件
+    store.on('load', function (store, records, isSuccessful, operation, options) {
+        //alert('load');
+        var record;
+        var bikes = [];
+        var minx = Number.MAX_VALUE;
+        var maxx = Number.MIN_VALUE;
+        var miny = Number.MAX_VALUE;
+        var maxy = Number.MIN_VALUE;
+        for (var i = 0; i < records.length; i++) {
+            record = records[i];
+            var name = record.get("StationName");
+            var id = record.get("StationID");
+            var x = record.get("X");
+            var y = record.get("Y");
+
+            if (x < minx) minx = x;
+            if (x > maxx) maxx = x;
+            if (y < miny) miny = y;
+            if (y > maxy) maxy = y;
+
+            bikes.push({ X: x, Y: y });
+        }
+
+        var cex = 0.5 * (minx + maxx);
+        var cey = 0.5 * (miny + maxy);
+        var center = new OpenLayers.LonLat(cex, cey);
+        map.panTo(center);
+
+        clearBikeMarkers();
+
+
+        showBikeMarkers(bikes);
+
+    });
+
     // create the Grid, see Ext.
     //Ext.ux.LiveSearchGridPanel
     var gridPanel = Ext.create('Ext.grid.Panel', {
@@ -204,6 +286,15 @@ function showSearchGrid() {
             lastText: '末页',
             refreshText: '刷新'
         }
+    });
+
+    gridPanel.on('itemdblclick', function (view, record, item, index, e, options) {
+        //alert('test');
+        var id = record.get('StationID');
+        var marker = bikeMarksLayer.markers[index];
+        var center = marker.lonlat;
+        map.panTo(center);
+        marker.events.triggerEvent('mousedown');
     });
 
     var window = Ext.create('widget.window', {
