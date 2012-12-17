@@ -5,56 +5,56 @@
  */
 KoalaGIS.EASYHZ.Map = KoalaGIS.EASYHZ.Class({
     /**
-    * APIProperty: map //地图对象
-    * {BMap.Map}
+    * @description 地图对象
+    * @field
+    * @type {BMap.Map}
     */
     map: null,
 
     /**
-    * APIProperty: city //所在城市
-    * {String}
+    * @description 所在城市
+    * @field
+    * @type {String}
     */
     city: "杭州",
 
     /**
-    * APIProperty: cityCenter //城市定位点
-    * {BMap.Point}
+    * @description 城市定位点
+    * @field
+    * @type {BMap.Point}
     */
     cityCenter: null,
 
     /**
-    * APIProperty: viewBound //城市范围 
-    * {BMap.Bound}
+    * @description 城市范围
+    * @field
+    * @type {BMap.Bound}
     */
     viewBound: null,
 
     /**
-    * APIProperty: currentLevel //当前地图级别
-    * {int}
+    * @description 当前地图级别
+    * @field
+    * @type {int}
     */
     currentLevel: 12,
 
     /**
-    * Constructor: KoalaGIS.EASYHZ.Map
-    *
-    * Parameters:
-    * id - {String} The map div's id
-    * citycenter-{point}
-    */
+     * @constructor: 初始化BMap.AutoComplete对象
+     * @param id - {String} The map div's id
+     * @param citycenter-{point}
+     */
     initialize: function (id, citycenter, level) {
         this.initializeMap(id, citycenter, level);
         this.registerEvents();
         this.addControl();
     },
 
-    /**
-    * Method: initializeMap
-    * 初始化地图，自动定位到指定城市，缩放到指定级别
-    *
-    * Parameters:
-    * id - {string} 地图容器的id。
-    * city - {BMap.Point} 指定城市的坐标点，地图自动定位到该点。
-    * level - ｛number｝ 地图初始的缩放级别
+   /**
+    * @description 初始化地图，自动定位到指定城市，缩放到指定级别
+    * @param: {string} 地图容器的id。
+    * @param: {BMap.Point} 指定城市的坐标点，地图自动定位到该点。
+    * @param:｛number｝ 地图初始的缩放级别
     */
     initializeMap: function (id, city, level) {
         //构建map对象
@@ -87,9 +87,9 @@ KoalaGIS.EASYHZ.Map = KoalaGIS.EASYHZ.Class({
         }
     },
 
-    /**
-    * Method: registerEvents
-    * 初始化地图事件
+   /**
+    * @description 初始化地图事件
+    * @return {NULL}
     */
     registerEvents: function () {
         this.map.enableDragging();
@@ -98,18 +98,40 @@ KoalaGIS.EASYHZ.Map = KoalaGIS.EASYHZ.Class({
         this.map.enableKeyboard();
     },
 
-    /**
-    * Method: addControl
-    * 添加地图控件
+   /**
+    * @description 添加控件
+    * @return {NULL}
     */
     addControl: function () {
         //向地图中添加缩放控件
-//        var ctrl_nav = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
-//        this.map.addControl(ctrl_nav);
+        //var ctrl_nav = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
+        //this.map.addControl(ctrl_nav);
         //向地图中添加比例尺控件
         var ctrl_sca = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
         this.map.addControl(ctrl_sca);
-    }
+    },
+
+    /**
+     * @dscription 在地图上添加Poi点
+     */
+    addMark:function(){},
+
+    /**
+     * @description 在地图上添加线段
+     */
+    addLine:function(){},
+
+    /**
+     * @description 将当前位置作为地图中心位置
+     */
+    panToCenter:function(){}
+
+
+
+
+
+
+
 });
 
 
