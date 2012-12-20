@@ -16,7 +16,7 @@ Ext.define('KoalaGIS.Ext.View.MapView', {
         border: false,
         bbar: [{
             xtype: 'displayfield',
-            value: '杭州市公共自行车查询'
+            value: '<span style="font-size:12px; font-weight:bold">杭州市公共自行车查询系统</span>'
         }, '->', {
             xtype: 'button',
             text: '显示自行车分布图',
@@ -30,25 +30,28 @@ Ext.define('KoalaGIS.Ext.View.MapView', {
                     this.setText('显示自行车分布图');
                 }
             }
-        }, '-', {
-            text: '清除',
-            handler: function () {
-                clear();
-            }
-        }, '-', {
+        },/*  '-', {
             text: '测试功能',
+            hidden:true,
             handler: function () {
                 //testShowMarks();
                 showSearchGrid();
             }
-        }, '-', {
+        },*/ '-', {
             xtype: 'textfield',
+            id: 'txtKeyword',
             fieldLabel: '名称',
-            labelWidth: 30
+            labelWidth: 50
         }, {
             text: '搜索',
             handler: function () {
-
+                var keyword = Ext.getCmp('txtKeyword').getValue();
+                searchBikes(keyword);
+            }
+        },'-', {
+            text: '清除',
+            handler: function () {
+                clear();
             }
         }]
     }/*, {
@@ -60,10 +63,10 @@ Ext.define('KoalaGIS.Ext.View.MapView', {
         region: 'south',
         //title: 'South Panel',
         collapsible: false,
-        html: 'Information goes here',
+        //html: 'Information goes here',
         split: false,
         height: 25,
-        html: '<div><div id="divXY"/><div style="float:right;">Copy Left By KoalaGIS Studio</div></div>'
+        html: '<div style=""><div style="display:inline;" id="divXY"/></div><div style="float:right;">Copy Left By <a href="http://www.5ihangzhou.com">KoalaGIS Studio</a></div>'
         //minHeight: 100
     }, {
         region: 'center',

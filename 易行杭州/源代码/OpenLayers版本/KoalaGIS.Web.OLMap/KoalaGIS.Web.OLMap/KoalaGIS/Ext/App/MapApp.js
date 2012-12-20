@@ -20,10 +20,20 @@ Ext.application({
 
         //Ext.create('KoalaGIS.map.OpenLayers');
 
+        //var panZoomCtrl = new OpenLayers.Control.PanZoomBar();
+        //var dragPanCtrl = new OpenLayers.Control.DragPan();
+
+        //new OpenLayers.Control.LayerSwitcher({}),
+
+        //new OpenLayers.Control.Permalink(),
+
+        //new OpenLayers.Control.MousePosition({})
+
         //初始化地图
         var map = KoalaGIS.OpenLayers.InitMap('divMap', {
             theme: null,
             projection: "EPSG:900913",
+           // controls: [],
             units: "m",
             maxExtent: new OpenLayers.Bounds(-20037508.34, -20037508.34, 20037508.34, 20037508.34),
             maxResolution: 156543.0339
@@ -37,14 +47,14 @@ Ext.application({
         KoalaGIS.OpenLayers.AddPanZoomBar();
 
         var divXY = document.getElementById('divXY');
-        map.addControl(new OpenLayers.Control.MousePosition({div:divXY,prefix:'当前坐标：'}));
+        map.addControl(new OpenLayers.Control.MousePosition({ div: divXY, prefix: '当前坐标：' }));
+
 
         var proj = new OpenLayers.Projection('EPSG:4326');
         var proj2 = new OpenLayers.Projection('EPSG:900913');
         //var lonlat = new OpenLayers.LonLat(116.404, 39.915);
 
-        //定位到杭州市保俶北路83号
-        var lonlat = new OpenLayers.LonLat(120.14127, 30.12216);
+        var lonlat = new OpenLayers.LonLat(120.12127, 30.12216);
         lonlat.transform(proj, proj2);
 
         map.setCenter(lonlat, 18);

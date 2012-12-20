@@ -8,6 +8,9 @@ var bikeLayer;
 //自行车标注图层
 var bikeMarksLayer;
 
+//显示自行车列表或者搜索结果集
+var bikesWindow;
+
 
 //添加自行车图层
 function addBikeLayer() {
@@ -75,6 +78,9 @@ function clear() {
         map.removeLayer(bikelayer);
     }
 
+    //清除标注
+    clearBikeMarkers();
+
 }
 
 //添加自行车标注
@@ -110,9 +116,40 @@ function showBikeMarkers(bikes) {
 //        mark.events.register('mouseout', mark, markMouseOut);
 
         //        bikeMarksLayer.addMarker(mark);
+        var htmlContent = createInfoWindowHTML(bike);
 
-        addMarker(bikeMarksLayer, mark, popupClass, 'testdsfsdfdfdsfdf<br>dfsdfsdfsdfsdf<br>dfsdfsdfsdfsdf<br>', true, true);
+        mark.data = bike;
+
+        addMarker(bikeMarksLayer, mark, popupClass, htmlContent, true, true);
     }
+}
+
+function createInfoWindowHTML(bike) {
+
+    var sHtml = [];
+    sHtml.push('<table border="1px" cellspacing="0px" style="width:300px;">');
+
+    function createRow(title, value, id ) {
+        if (!id) {
+            return '<tr><td>' + title + '</td><td>' + value + '</td></tr>';
+        } else {
+            return '<tr><td>' + title + '</td><td id="'+ id +'">' + value + '</td></tr>';  
+        }
+    }
+
+    sHtml.push(createRow('站点名称', bike.StationName));
+    sHtml.push(createRow('租车情况', '数据加载中......', 'BikeBorrowInfo'));
+    sHtml.push(createRow('服务时间', bike.ServiceTime));
+    sHtml.push(createRow('值守状态', bike.ServiceState));
+    sHtml.push(createRow('站点地址', bike.StationAddr));
+    sHtml.push(createRow('服务电话', bike.ServicePhone));
+    sHtml.push(createRow('其他服务', bike.StationRemarks));
+
+    sHtml.push('</table');
+
+    sHtml = sHtml.join('');
+
+    return sHtml;
 }
 
 
@@ -133,6 +170,13 @@ function addMarker(markers, marker, popupClass, popupContentHTML, closeBox, over
         }
 
         var lonlat = marker.lonlat;
+
+        var bikeid;
+        if (marker.data) {
+            var bike = marker.data;
+            bikeid = bike.StationID;
+
+        }
         g_popup = new popupClass("popup",
             lonlat,
             new OpenLayers.Size(200, 200),
@@ -142,6 +186,28 @@ function addMarker(markers, marker, popupClass, popupContentHTML, closeBox, over
 
         map.addPopup(g_popup);
         g_popup.show();
+
+        if (bikeid) {
+            //加载数据
+            Ext.Ajax.request({
+                url: 'queryStationInfo.ashx?type=1&keyword=' + bikeid,
+                success: function (response) {
+                    var json = Ext.decode(response.responseText);
+                    var information = '没有查询到数据！';
+                    if (json.length > 0) {
+                        var n1 = json[0].CYCAVAIL;
+                        var n2 = json[0].CYCBACK;
+                        information = '可借' + n1 + '辆,可还' + n2 + '辆';
+                    }
+
+                    document.getElementById('BikeBorrowInfo').innerHTML = information ;
+                },
+                failure: function () {
+                    document.getElementById('BikeBorrowInfo').innerHTML = '查询数据失败！';
+                }
+            });
+
+        }
 
         OpenLayers.Event.stop(evt);
     };
@@ -153,6 +219,12 @@ function addMarker(markers, marker, popupClass, popupContentHTML, closeBox, over
 
 //清除所有的自行车标注
 function clearBikeMarkers() {
+
+    if (g_popup) {
+        map.removePopup(g_popup);
+        //g_popup.destroy();
+        g_popup = null;
+    }
 
     if (bikeMarksLayer) {
         var mks = bikeMarksLayer.markers;
@@ -186,13 +258,79 @@ function testShowMarks(bbox) {
 
 }
 
-//根据当前bbox搜索自行车
-function searchBikes(bbox) {
-    
+//根据名称或地址搜索自行车
+function searchBikes(keyword) {
+    var store = Ext.data.StoreManager.lookup('GridBikesStore');
+    if (!store) {
+        var store = Ext.create('Ext.data.Store', {
+            autoLoad: true,
+            pageSize: 10,
+            storeId: 'GridBikesStore',
+            proxy: {
+                type: 'ajax',
+                url: 'Bikes/BikesHandler.ashx?request=searchbikesbyname',
+                extraParams: { keyword: keyword },
+                limitParam: 'pagesize',
+                reader: {
+                    type: 'json',
+                    root: 'ResultSet',
+                    totalProperty: 'TotalCount'
+                }
+            },
+            fields: ['StationName', 'StationID', 'X', 'Y', 'ServiceTime', 'ServicePhone', 'StationAddr', 'ServiceState']
+        });
+        //绑定load数据的事件
+        store.on('load', function (store, records, isSuccessful, operation, options) {
+            //alert('load');
+            var record;
+            var bikes = [];
+            var minx = Number.MAX_VALUE;
+            var maxx = Number.MIN_VALUE;
+            var miny = Number.MAX_VALUE;
+            var maxy = Number.MIN_VALUE;
+            for (var i = 0; i < records.length; i++) {
+                record = records[i];
+                var name = record.get("StationName");
+                var id = record.get("StationID");
+                var x = record.get("X");
+                var y = record.get("Y");
+
+                if (x < minx) minx = x;
+                if (x > maxx) maxx = x;
+                if (y < miny) miny = y;
+                if (y > maxy) maxy = y;
+
+                //bikes.push({ X: x, Y: y,Station });
+                bikes.push(record.data);
+            }
+
+            //var cex = 0.5 * (minx + maxx);
+            //var cey = 0.5 * (miny + maxy);
+            //var center = new OpenLayers.LonLat(cex, cey);
+            //map.panTo(center);
+          
+            map.zoomToExtent([minx, miny, maxx, maxy], true);
+
+            clearBikeMarkers();
+
+
+            showBikeMarkers(bikes);
+
+        });
+    } else {
+        var proxy = store.getProxy();
+        proxy.url = 'Bikes/BikesHandler.ashx?request=searchbikesbyname';
+        proxy.extraParams = {keyword:keyword};
+    }
+
+    store.load();
+
+    showBikesWindow(store);
 }
 
 //获取指定自行车位的详细信息
 function showBikeInfo(id) {
+    
 }
 
 function showSearchGrid() {
@@ -202,6 +340,7 @@ function showSearchGrid() {
         pageSize: 10,
         proxy: {
             type: 'ajax',
+            storeId: 'GridBikesStore',
             url: 'Bikes/BikesHandler.ashx?request=querybikes',
             limitParam: 'pagesize',
             reader: {
@@ -210,7 +349,7 @@ function showSearchGrid() {
                 totalProperty: 'TotalCount'
             }
         },
-        fields: [{ name: 'StationName' }, { name: 'StationID' }, { name: 'X' }, { name: 'Y'}]
+        fields: ['StationName', 'StationID', 'X', 'Y', 'ServiceTime', 'ServicePhone', 'StationAddr', 'ServiceState']
     });
 
     //绑定load数据的事件
@@ -234,7 +373,8 @@ function showSearchGrid() {
             if (y < miny) miny = y;
             if (y > maxy) maxy = y;
 
-            bikes.push({ X: x, Y: y });
+            //bikes.push({ X: x, Y: y,Station });
+            bikes.push(record.data);
         }
 
         var cex = 0.5 * (minx + maxx);
@@ -249,59 +389,76 @@ function showSearchGrid() {
 
     });
 
-    // create the Grid, see Ext.
-    //Ext.ux.LiveSearchGridPanel
-    var gridPanel = Ext.create('Ext.grid.Panel', {
-        store: store,
-        columnLines: true,
-        columns: [{
-            text: 'ID',
-            width: 75,
-            dataIndex: 'StationID'
-        }, {
-            text: '名称',
-            flex: 1,
-            dataIndex: 'StationName'
-        }],
-        height: 360,
-        width: 310,
-        //title: 'Live Search Grid',
-        //renderTo: 'grid-example',
-        viewConfig: {
-            stripeRows: true
-        },
-        bbar: {
-            xtype: 'pagingtoolbar',
-            store:store,
-            pageSize:10,
-            displayInfo: true,
-            //displayMsg: '显示第 {0} 条到  {1} 条记录, 一共 {2} 条',
-            displayMsg: '共{2} 条',
-            emptyMsg: "没有记录",
-            beforePageText: '页码',
-            afterPageText: '/{0}',
-            firstText: '首页',
-            prevText: '上一页',
-            nextText: '下一页',
-            lastText: '末页',
-            refreshText: '刷新'
-        }
-    });
+    showBikesWindow(store);
+}
 
-    gridPanel.on('itemdblclick', function (view, record, item, index, e, options) {
-        //alert('test');
-        var id = record.get('StationID');
-        var marker = bikeMarksLayer.markers[index];
-        var center = marker.lonlat;
-        map.panTo(center);
-        marker.events.triggerEvent('mousedown');
-    });
 
-    var window = Ext.create('widget.window', {
-        title:'自行车列表',
-        layout: 'fit',
-        items:[gridPanel]
-    });
+//根据数据源显示列表窗体
+function showBikesWindow(store) {
+    if (!bikesWindow) {
+        var gridPanel = Ext.create('Ext.grid.Panel', {
+            store: store,
+            columnLines: true,
+            columns: [{
+                text: 'ID',
+                width: 75,
+                dataIndex: 'StationID'
+            }, {
+                text: '名称',
+                flex: 1,
+                dataIndex: 'StationName'
+            }],
+            height: 360,
+            width: 310,
+            //title: 'Live Search Grid',
+            //renderTo: 'grid-example',
+            viewConfig: {
+                stripeRows: true
+            },
+            bbar: {
+                xtype: 'pagingtoolbar',
+                store: store,
+                pageSize: 10,
+                displayInfo: true,
+                //displayMsg: '显示第 {0} 条到  {1} 条记录, 一共 {2} 条',
+                displayMsg: '共{2} 条',
+                emptyMsg: "没有记录",
+                beforePageText: '页码',
+                afterPageText: '/{0}',
+                firstText: '首页',
+                prevText: '上一页',
+                nextText: '下一页',
+                lastText: '末页',
+                refreshText: '刷新'
+            }
+        });
+        gridPanel.on('itemdblclick', function (view, record, item, index, e, options) {
+            var id = record.get('StationID');
+            var marker = bikeMarksLayer.markers[index];
+            var center = marker.lonlat;
+            map.panTo(center);
+            marker.events.triggerEvent('mousedown');
+        });
+        
+        bikesWindow = Ext.create('widget.window', {
+            closeAction:'hide',
+            title: '自行车列表',
+            layout: 'fit',
+            items: [gridPanel]
+        });
 
-    window.show();
+        var width = Ext.Element.getDocumentWidth();
+        var height = Ext.Element.getDocumentHeight();
+
+        bikesWindow.setPosition(width - 350, 120, true);
+
+
+        bikesWindow.on('hide', function (cmp, options) {
+            clearBikeMarkers();
+        });
+    }
+
+    if (!bikesWindow.isVisible()) {
+        bikesWindow.show();
+    }
 }
