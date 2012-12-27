@@ -405,14 +405,17 @@ OpenLayers.Layer.ArcGISCacheEx = OpenLayers.Class(OpenLayers.Layer.XYZ, {
         var res = this.getResolution();
 
         // tile center
-        var originTileX = (this.tileOrigin.lon + (res * this.tileSize.w / 2));
-        var originTileY = (this.tileOrigin.lat - (res * this.tileSize.h / 2));
+        var originTileX = (this.tileOrigin.lon /*+ (res * this.tileSize.w / 2)*/);
+        var originTileY = (this.tileOrigin.lat /*- (res * this.tileSize.h / 2)*/);
 
         var center = bounds.getCenterLonLat();
         var point = { x: center.lon, y: center.lat };
         var x = (Math.round(Math.abs((center.lon - originTileX) / (res * this.tileSize.w))));
         var y = (Math.round(Math.abs((originTileY - center.lat) / (res * this.tileSize.h))));
         var z = this.map.getZoom();
+
+      //  x += 1;
+        y -= 1;
 
         // this prevents us from getting pink tiles (non-existant tiles)
         if (this.lods) {
